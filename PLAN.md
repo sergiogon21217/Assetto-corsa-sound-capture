@@ -79,7 +79,7 @@ Write down which market your recording car is from.
 4. **Extras**: 5+ clean pops/crackles, turbo blow-off/flutter on lift,
    gear whine at steady cruise, horn, door (optional).
 
-Record each takes in **both N mode (valve open, ESG on)** and **ESG off**
+Record each take in **both N mode (valve open, ESG on)** and **ESG off**
 if possible.
 
 ### 2.3 If you can't get a car
