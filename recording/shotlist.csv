@@ -1,0 +1,71 @@
+take_id,session,tier,type,target_rpm,load,gear,drive_mode,esg,hold_s,reps,channels,feeds_fmod_event,notes
+NOISE-DYNO,dyno,A,noise,0,engine off,-,-,-,30,1,EXH BAY CAB,-,"Dyno fans running, engine off: noise profile"
+IDLE-N,dyno,A,idle,800,none,N/P,N,off,30,2,EXH BAY CAB,engine_ext engine_int,Warm engine; the 800 point for both ON and OFF layers
+IDLE-N-ESG,dyno,B,idle,800,none,N/P,N,on,20,1,CAB,engine_int,Cabin reference with ESG on
+SS-ON-900,dyno,B,steady,900,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-1000,dyno,A,steady,1000,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-1150,dyno,B,steady,1150,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-1300,dyno,A,steady,1300,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-1500,dyno,B,steady,1500,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-1700,dyno,A,steady,1700,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-1900,dyno,B,steady,1900,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-2150,dyno,A,steady,2150,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-2400,dyno,B,steady,2400,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-2700,dyno,A,steady,2700,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-3000,dyno,B,steady,3000,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-3400,dyno,A,steady,3400,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-3800,dyno,B,steady,3800,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-4250,dyno,A,steady,4250,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-4750,dyno,B,steady,4750,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-5300,dyno,A,steady,5300,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-5900,dyno,B,steady,5900,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-ON-6500,dyno,A,steady,6500,full (WOT),4,N,off,8,2,EXH BAY CAB,engine_ext engine_int turbo,Hold on dyno load control; start the 8 s after rpm is stable
+SS-MID-900,dyno,C,steady,900,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-1000,dyno,C,steady,1000,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-1150,dyno,C,steady,1150,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-1300,dyno,C,steady,1300,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-1500,dyno,C,steady,1500,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-1700,dyno,C,steady,1700,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-1900,dyno,C,steady,1900,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-2150,dyno,C,steady,2150,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-2400,dyno,C,steady,2400,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-2700,dyno,C,steady,2700,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-3000,dyno,C,steady,3000,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-3400,dyno,C,steady,3400,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-3800,dyno,C,steady,3800,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-4250,dyno,C,steady,4250,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-4750,dyno,C,steady,4750,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-5300,dyno,C,steady,5300,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-5900,dyno,C,steady,5900,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-MID-6500,dyno,C,steady,6500,part (~30-40% pedal),4,N,off,6,1,EXH CAB,engine_ext engine_int,Optional mid-load layer
+SS-OFF-900,dyno,B,steady,900,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-1000,dyno,A,steady,1000,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-1150,dyno,B,steady,1150,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-1300,dyno,A,steady,1300,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-1500,dyno,B,steady,1500,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-1700,dyno,A,steady,1700,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-1900,dyno,B,steady,1900,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-2150,dyno,A,steady,2150,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-2400,dyno,B,steady,2400,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-2700,dyno,A,steady,2700,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-3000,dyno,B,steady,3000,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-3400,dyno,A,steady,3400,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-3800,dyno,B,steady,3800,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-4250,dyno,A,steady,4250,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-4750,dyno,B,steady,4750,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-5300,dyno,A,steady,5300,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-5900,dyno,B,steady,5900,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+SS-OFF-6500,dyno,A,steady,6500,overrun (0% pedal),4,N,off,8,1,EXH BAY CAB,engine_ext engine_int,Only if the dyno can MOTOR the car; otherwise use CD-OFF
+CD-OFF,dyno,A,ramp,6500->800,overrun (0% pedal),5,N,off,,4,EXH BAY CAB,engine_ext engine_int,"Coast-down, slowest decel possible; OFF-layer source when dyno can't motor"
+RAMP-ON,dyno,A,ramp,1000->limiter,full (WOT),4,N,off,,3,EXH BAY CAB,reference,Slow sweep (~150-300 rpm/s if dyno has sweep mode); A/B reference for the finished bank
+RAMP-ON-ESG,dyno,B,ramp,1000->limiter,full (WOT),4,N,on,,1,CAB,reference,What the driver hears with ESG
+LIMIT,dyno,A,steady,limiter,full (WOT),4,N,off,3,3,EXH BAY CAB,limiter engine_ext engine_int,Hold on limiter max 3 s
+UP-WOT,track,A,one-shot,~6000,full (WOT),1>2 2>3 3>4,N,off,,5,EXH CAB,gear_ext gear_int,DCT spark-cut upshift; manual paddles
+UP-PART,track,B,one-shot,~3500,part,2>3 3>4,N,off,,5,EXH CAB,gear_ext gear_int,Soft upshift
+DOWN,track,A,one-shot,~3000,overrun,4>3 3>2,N,off,,5,EXH CAB,gear_ext gear_int,Rev-match blip
+POP,track,A,one-shot,5000+ then lift,full->0,3,N,off,,10,EXH CAB,backfire_ext backfire_int,Sharp lift from WOT; aim for 20+ clean pops
+BOV,track,A,one-shot,4000+ then lift,full->0,3,N,off,,6,BAY CAB,turbo,Diverter valve whoosh/flutter; may be quiet (recirculating valve)
+CRUISE-WHINE,track,B,steady,~2000-2500,light,6-8,N,off,15,2,CAB,transmission,"Steady cruise, then coast; gearbox/tyre whine"
+HORN,track,B,one-shot,-,-,-,-,-,1,3,EXT,horn,"Parked, exterior mic 3 m in front"
+DRIVEBY,track,B,reference,varied,varied,3,N,off,,4,EXT,reference,Static roadside stereo; exterior mix reference only
+NOISE-TRACK,track,A,noise,0,engine off,-,-,-,30,1,EXH BAY CAB EXT,-,Wind/ambient noise profile

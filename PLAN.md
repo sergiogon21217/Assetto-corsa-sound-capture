@@ -53,6 +53,10 @@ Write down which market your recording car is from.
 
 ## 2. Capture: what to record
 
+> The detailed version (exact rpm grid, channels, run order, shot list) is in
+> [`recording/RECORDING_PLAN.md`](recording/RECORDING_PLAN.md) and
+> [`recording/shotlist.csv`](recording/shotlist.csv).
+
 ### 2.1 Gear
 - 3–4 recorders or channels, time-synced with a clap or slate at the start of every take:
   1. **Exhaust**: dynamic mic (e.g. SM57-type) 30–50 cm behind the tip, off-axis
