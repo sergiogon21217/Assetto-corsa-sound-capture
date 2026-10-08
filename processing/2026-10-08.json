@@ -229,5 +229,6 @@
   "no_denoise": [
     "idle n.wav",
     "limiter N.wav"
-  ]
+  ],
+  "car_folder": "hyundai_kauai_n"
 }

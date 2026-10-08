@@ -1,7 +1,9 @@
-# Building the Kona N sound bank in FMOD
+# Building the Kauai N sound bank in FMOD
 
-Step-by-step, on Windows. The audio is ready in `fmod/Assets/kona_n/`, and
-`fmod/instruments.csv` says where every file goes. Items marked ⚠ come from community
+Step-by-step, on Windows, for the car `hyundai_kauai_n`
+(`C:\Program Files (x86)\Steam\steamapps\common\assettocorsa\content\cars\hyundai_kauai_n`).
+The audio is ready in `fmod/Assets/hyundai_kauai_n/`, and `fmod/instruments.csv` says where
+every file goes. Items marked ⚠ come from community
 sources and haven't been confirmed against Kunos's own documentation.
 
 ## 0. What you need
@@ -11,8 +13,9 @@ sources and haven't been confirmed against Kunos's own documentation.
   If FMOD ever offers to *upgrade* the project, you're on the wrong version: cancel.
 - **The Kunos sound SDK**, installed with the game: `steamapps/common/assettocorsa/sdk/audio/`
   (an example FMOD project plus *AC Audio Pipeline 1.9.pdf*).
-- **The Kona N mod's car folder name**: the folder under `content/cars/`. Everything below
-  writes it as `<car>`. The bank and the event folder must use exactly this name.
+- **The car folder name: `hyundai_kauai_n`.** Everything below writes it as `<car>`. The bank
+  (`hyundai_kauai_n.bank`) and the event folder (`event:/cars/hyundai_kauai_n/...`) must use
+  exactly this name.
 - **The mod's idle and limiter rpm** from its `engine.ini` (the real car: idle ~900 in N
   mode, limiter ~6,750).
 
@@ -25,7 +28,7 @@ sources and haven't been confirmed against Kunos's own documentation.
 4. In the **Banks** browser, create a bank named exactly `<car>`. Select all events in
    `cars/<car>/`, right-click, **Assign to Bank** `<car>`, and remove them from the template's
    bank.
-5. Drag the folder `fmod/Assets/kona_n` from this repo into the **Assets** browser.
+5. Drag the folder `fmod/Assets/hyundai_kauai_n` from this repo into the **Assets** browser.
 
 ## 2. (Optional, recommended) Run the probe
 
@@ -42,7 +45,7 @@ become one click. Until then, they're manual.
 
 ## 3. Engine events: `engine_int` and `engine_ext`
 
-Do `engine_int` first using `Assets/kona_n/engine_int/...`, then repeat for `engine_ext`
+Do `engine_int` first using `Assets/hyundai_kauai_n/engine_int/...`, then repeat for `engine_ext`
 using `engine_ext/...`. AC drives two parameters on both: `rpms` (the engine rpm) and
 `throttle` (0–1).
 
@@ -89,7 +92,8 @@ using `engine_ext/...`. AC drives two parameters on both: `rpms` (the engine rpm
 
 1. **File → Build** (Desktop platform). Then **File → Export GUIDs**.
 2. From the project's build output, take `<car>.bank` and `GUIDs.txt`.
-3. **Back up** the mod's existing `content/cars/<car>/sfx/` folder, then copy both files in.
+3. **Back up** the car's existing `content\cars\hyundai_kauai_n\sfx\` folder (if it has one),
+   then copy both files in, creating `sfx\` if needed.
    Never copy or overwrite `common.bank` or the master bank.
 4. Restart the AC session to hear changes. Banks load per session, so start a new Quick Drive
    in Content Manager after every rebuild.
