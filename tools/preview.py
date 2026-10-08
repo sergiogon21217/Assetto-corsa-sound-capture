@@ -7,6 +7,9 @@ Uses the same crossfade and pitch rules as pitch_table.py. Writes into <loops>/p
   pull_and_coast.wav    ON layer pull 1500 -> 6500, then OFF layer coast 6500 -> 1000
   compare_3k_limit.wav  the real "3k limit" pull, then the ON layer following its rpm
   compare_limit_3k.wav  the real "limit 3k" coast-down, then the OFF layer following it
+  compare_2_3_4_wot.wav the real 2-3-4 WOT upshifts, then ON loops following its rpm, with
+                        the OFF loops blended in while rpm drops on each shift (no shift
+                        one-shots yet)
 """
 import csv
 import sys
@@ -57,6 +60,25 @@ def follow(x, sr, layer_rpms, loops, a_s, b_s, **hints):
     return np.concatenate([real, gap, synth])
 
 
+def follow_shifts(x, sr, on, off, a_s, b_s, drop_rate=-3000, hold_s=0.08, **hints):
+    """Like follow(), but throttle is 'off' wherever rpm falls faster than drop_rate rpm/s."""
+    t, r, _ = track(x, sr, **hints)
+    k = (t >= a_s) & (t <= b_s)
+    ts = np.arange(int(a_s * sr), int(b_s * sr)) / sr
+    path = np.interp(ts, t[k], r[k])
+    drop = np.interp(ts, t[k], (np.gradient(r, t) < drop_rate)[k].astype(float)) > 0.5
+    hold = int(hold_s * sr)                       # keep throttle off a moment after the drop
+    idx = np.flatnonzero(drop)
+    for i in idx:
+        drop[i:i + hold] = True
+    smooth = int(0.03 * sr)
+    throttle = np.convolve(1 - drop.astype(float), np.ones(smooth) / smooth, mode="same")
+    throttle = np.clip(throttle, 0, 1)[:, None]
+    synth = render(*on, path, sr) * np.sqrt(throttle) + render(*off, path, sr) * np.sqrt(1 - throttle)
+    real = x[int(a_s * sr):int(a_s * sr) + len(path)]
+    return np.concatenate([real, np.zeros((sr // 2, x.shape[1])), synth])
+
+
 def main():
     d = Path(sys.argv[1])
     rec = Path(sys.argv[2]) if len(sys.argv) > 2 else None
@@ -78,6 +100,10 @@ def main():
         write_wav(out / "compare_limit_3k.wav",
                   follow(highpass(x, sr), sr, *off, 0.5, 14.5, lo=2500, hi=7000,
                          start_hint=(6200, 6900), end_hint=(2700, 3500)), sr)
+        x, _ = read_wav(rec / "2 3 4 wot.wav")
+        write_wav(out / "compare_2_3_4_wot.wav",
+                  follow_shifts(highpass(x, sr), sr, on, off, 0.15, 6.6, lo=4000, hi=7000,
+                                max_rate=12000), sr)
     print("previews ->", out)
 
 
