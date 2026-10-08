@@ -66,9 +66,8 @@ Write down which market your recording car is from.
   3. **Cabin**: stereo pair or a Zoom-style recorder at driver's head height.
   4. (Optional) **External drive-by / chase**: for replays and the external camera.
 - Record at 48 kHz / 24-bit WAV (32-bit float if the recorder supports it).
-- **OBD-II logger** (OBDLink plus Torque/RealDash, or similar) logging rpm,
-  throttle, boost and gear at ≥10 Hz. This is how each sample gets its exact rpm.
-  Audio can back it up (see §3.2), but logs save hours.
+- **No OBD logger (decided).** Each sample's rpm is tracked from the engine tone in
+  the audio (§3, step 2), with spoken slates and a paper take log for context.
 - Action camera: optional, but it helps with syncing and with checking what was happening.
 
 ### 2.2 Takes (best to worst)
@@ -85,7 +84,7 @@ Write down which market your recording car is from.
 
 **Decided:** record **cabin-only**, in **Normal mode**, with the **ESG off**. The
 exterior sound is derived from the cabin recordings with EQ plus a light reverb in FMOD
-(see `recording/RECORDING_PLAN.md` §9). Recording is on a **straight private road**
+(see `recording/RECORDING_PLAN.md` §10). Recording is on a **straight private road**
 (no dyno): full-load loops come from slow WOT pulls and off-throttle loops from
 coast-downs, both sliced and pitch-flattened at each grid rpm; part-load loops are
 recorded as true constant-speed holds.
@@ -102,9 +101,8 @@ The i30 N and Veloster N are fair fallbacks (§0).
 Suggested tools: Reaper or Audacity for editing, plus the Python scripts planned
 for this repo (§6).
 
-1. **Sync** all channels and the OBD log to the slate clap.
+1. **Sync** all channels (and any dash video) to the slate clap.
 2. **Tag rpm** for every region:
-   - from the OBD log, or
    - from audio: a spectrogram/FFT peak of the 2nd engine order,
      `rpm = f_peak × 30`. At 3,000 rpm that's a 100 Hz fundamental.
 3. **Cut loops**: from steady-state takes, or from short windows of the road
@@ -173,10 +171,10 @@ Planned layout (nothing implemented yet, this is the plan):
 
 ```
 recordings/        # raw takes (git-ignored or Git LFS; can be large)
-logs/              # OBD CSVs
+logs/              # take logs (checklist photos / CSV)
 tools/
-  sync.py          # align channels + OBD log via slate clap
-  rpm_track.py     # rpm vs time from audio (2nd-order FFT peak) or OBD
+  sync.py          # align channels via slate clap
+  rpm_track.py     # rpm vs time from audio (2nd-order FFT peak)
   cut_loops.py     # extract N-cycle loops at target rpms, zero-crossing cut
   normalize.py     # per-layer loudness matching
   pitch_table.py   # rpm regions + crossfade/pitch automation values for FMOD
@@ -201,7 +199,7 @@ Milestones:
 - **Which Kona N mod?** Folder name, `engine.ini` rpm limits and whether the
   author allows sound replacements. This needs to be answered first.
 - **Road-only capture (decided).** Sweeps instead of steady holds, plus wind/tyre
-  noise at speed. Workable with slow sweeps, OBD rpm tracking and a rolling noise
+  noise at speed. Workable with slow sweeps, rpm tracked from the audio and a rolling noise
   profile, but processing has to pitch-flatten each slice before looping.
 - ~~**ESG in the cabin.**~~ Decided: ESG off, mechanical sound only.
 - **FMOD 1.08 availability.** Old versions are downloadable from the FMOD site

@@ -163,7 +163,7 @@ def session(title, blocks):
 def header():
     settings = ["Normal drive mode", "ESG OFF (check menu)", "Manual / paddle mode",
                 "A/C, fan, radio off", "Windows + sunroof closed, no rattles", "Warm engine",
-                "OBD logging", "Gains locked after LIMIT", "Say take ID, clap, blip, go"]
+                "Dash video on (optional)", "Gains locked after LIMIT", "Say take ID + gear, clap, go"]
     cells = [Paragraph(f"{BOX}  {s}", S["cell"]) for s in settings]
     grid = Table([cells[0:3], cells[3:6], cells[6:9]], colWidths=[89 * mm] * 3)
     grid.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.6, RULE),
