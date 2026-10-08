@@ -82,9 +82,10 @@ Write down which market your recording car is from.
 4. **Extras**: 5+ clean pops/crackles, turbo blow-off/flutter on lift,
    gear whine at steady cruise, horn, door (optional).
 
-**Decided:** record **cabin-only**, in **Normal mode**, with the **ESG off**. The
-exterior sound is derived from the cabin recordings with EQ plus a light reverb in FMOD
-(see `recording/RECORDING_PLAN.md` §10). Recording is on a **straight private road**
+**Decided:** record with **one phone in the cabin** (RecForge II), in **two passes with
+the same rpm samples**: **Pass A** in Normal mode with the ESG off (source for the interior
+sound) and **Pass B** in N mode with the ESG on (source for the exterior sound, after EQ
+plus a light reverb in FMOD; see `recording/RECORDING_PLAN.md` §10). Recording is on a **straight private road**
 (no dyno): full-load loops come from slow WOT pulls and off-throttle loops from
 coast-downs, both sliced and pitch-flattened at each grid rpm; part-load loops are
 recorded as true constant-speed holds.
@@ -201,7 +202,7 @@ Milestones:
 - **Road-only capture (decided).** Sweeps instead of steady holds, plus wind/tyre
   noise at speed. Workable with slow sweeps, rpm tracked from the audio and a rolling noise
   profile, but processing has to pitch-flatten each slice before looping.
-- ~~**ESG in the cabin.**~~ Decided: ESG off, mechanical sound only.
+- ~~**ESG in the cabin.**~~ Decided: both. ESG off (Normal mode) for the interior, ESG on (N mode) as the exterior source.
 - **FMOD 1.08 availability.** Old versions are downloadable from the FMOD site
   archive with a free account.
 - **Legal/safety**: record WOT pulls only on the closed private road, with it kept clear.

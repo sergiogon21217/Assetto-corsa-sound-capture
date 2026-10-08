@@ -1,39 +1,62 @@
 take_id,session,tier,type,target_rpm,load,gear,drive_mode,esg,hold_s,reps,channels,feeds_fmod_event,notes
-NOISE-PARK,road,A,noise,0,engine off,-,-,-,30,1,CAB FWL,-,"Parked, engine off: background noise profile"
-NOISE-CRUISE,road,B,noise,low,lightest,8 (top),Normal,off,10,2,CAB FWL,-,"Steady ~80 km/h in top gear, barely on throttle: wind/tyre noise profile for cleanup"
-IDLE,road,A,idle,800,none,Neutral/P,Normal,off,30,2,CAB FWL,engine_int engine_ext,"Stationary, warm engine; the 800 point for every layer"
-IDLE-NMODE,road,B,idle,N-mode idle,none,Neutral/P,N,off,20,1,CAB FWL,reference,N drive mode (ESG off): idle sits higher. Note both idle rpms
-LIMIT,road,A,steady,limiter,full (WOT),2,Normal,off,2,3,CAB FWL,limiter engine_int engine_ext,"Brief hold on the limiter, only if manual mode holds the gear. First take sets gains"
-PULL-LO,road,A,ramp,1000->4000,full (WOT),highest that fits,Normal,off,,4,CAB FWL,engine_int engine_ext turbo,WOT from ~1000 rpm in the highest gear the road allows; aim for <= 500 rpm/s
-PULL-HI,road,A,ramp,3000->limiter,full (WOT),3 or 4,Normal,off,,4,CAB FWL,engine_int engine_ext turbo,WOT from ~3000 rpm to the limiter in the highest gear that reaches it in your road length
-PULL-REF,road,B,ramp,1500->limiter,full (WOT),2,Normal,off,,2,CAB FWL,reference,Normal-speed pull; A/B reference for the finished bank
-COAST-HI,road,A,ramp,limiter->1500,overrun (0%),3 or 4,Normal,off,,4,CAB FWL,engine_int engine_ext backfire_int,"Lift fully from near the limiter, stay in gear, no brakes"
-COAST-LO,road,A,ramp,3000->1000,overrun (0%),5 or 6,Normal,off,,3,CAB FWL,engine_int engine_ext,Lift from ~3000 in a high gear; slow decel covers the low rpm points
-SS-PART-900,road,B,steady,900,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-1000,road,A,steady,1000,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-1150,road,B,steady,1150,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-1300,road,A,steady,1300,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-1500,road,B,steady,1500,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-1700,road,A,steady,1700,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-1900,road,B,steady,1900,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-2150,road,A,steady,2150,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-2400,road,B,steady,2400,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-2700,road,A,steady,2700,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-3000,road,B,steady,3000,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-3400,road,A,steady,3400,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-3800,road,B,steady,3800,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-4250,road,A,steady,4250,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-4750,road,B,steady,4750,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-5300,road,A,steady,5300,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-5900,road,B,steady,5900,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-SS-PART-6500,road,A,steady,6500,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
-UP-WOT,road,A,one-shot,~6000,full (WOT),1>2 2>3 3>4,Normal,off,,5,CAB FWL,gear_int gear_ext,Paddle upshift at WOT
-UP-PART,road,B,one-shot,~3500,part,2>3 3>4,Normal,off,,5,CAB FWL,gear_int gear_ext,Soft upshift
-DOWN,road,A,one-shot,~3000,overrun,4>3 3>2,Normal,off,,5,CAB FWL,gear_int gear_ext,"Rev-match blip, if Normal mode does one"
-LIFT,road,A,one-shot,4000+ then lift,full->0,3,Normal,off,,6,CAB FWL,turbo backfire_int backfire_ext,Sharp lift from WOT: diverter-valve whoosh plus any pops
-POP-N,road,B,one-shot,5000+ then lift,full->0,3,N (ESG off),off,,8,CAB FWL,backfire_int backfire_ext,Optional: only if you want pops; Normal mode gives few or none
-CRUISE-WHINE,road,B,steady,~2000-2500,light,6-8,Normal,off,15,2,CAB FWL,transmission,"Steady cruise, then coast; gearbox whine"
-IDLE-ESG,road,B,idle,800,none,Neutral/P,Normal,ON,20,1,CAB FWL,reference (ESG),ESG ON. Stationary idle
-PULL-REF-ESG,road,B,ramp,1500->limiter,full (WOT),2,Normal,ON,,2,CAB FWL,reference (ESG),ESG ON. Same as PULL-REF
-PART-ESG-2150,road,B,steady,2150,light,low,Normal,ON,8,1,CAB FWL,reference (ESG),ESG ON. Same as SS-PART-2150
-PART-ESG-4250,road,B,steady,4250,light,low,Normal,ON,8,1,CAB FWL,reference (ESG),ESG ON. Same as SS-PART-4250
+NOISE-PARK,road,A,noise,0,engine off,-,-,-,30,1,CAB,-,"Parked, engine off: background noise profile"
+NOISE-CRUISE,road,B,noise,low,lightest,8 (top),Normal,off,10,2,CAB,-,"Steady ~80 km/h in top gear, barely on throttle: wind/tyre noise profile"
+GAIN-CHECK,road,A,steady,limiter,full (WOT),2,N,ON,2,1,CAB,-,"Loudest case: set gain to about -6 dBFS peaks, then lock it for both passes"
+IDLE,road,A,idle,idle,none,Neutral/P,Normal,off,30,2,CAB,engine_int,"Stationary, warm engine"
+LIMIT,road,A,steady,limiter,full (WOT),2,Normal,off,2,3,CAB,limiter engine_int,"Brief hold, only if manual mode holds the gear"
+PULL-LO,road,A,ramp,1000->4000,full (WOT),highest that fits,Normal,off,,4,CAB,engine_int turbo,WOT from ~1000 rpm; at least 6 s to reach 4000
+PULL-HI,road,A,ramp,3000->limiter,full (WOT),3 or 4,Normal,off,,4,CAB,engine_int turbo,WOT from ~3000 rpm to the limiter; at least 7-8 s
+COAST-HI,road,A,ramp,limiter->1500,overrun (0%),3 or 4,Normal,off,,4,CAB,engine_int,"Lift fully from near the limiter, stay in gear, no brakes"
+COAST-LO,road,A,ramp,3000->1000,overrun (0%),5 or 6,Normal,off,,3,CAB,engine_int,Lift from ~3000 in a high gear
+SS-PART-900,road,B,steady,900,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-1000,road,A,steady,1000,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-1150,road,B,steady,1150,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-1300,road,A,steady,1300,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-1500,road,B,steady,1500,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-1700,road,A,steady,1700,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-1900,road,B,steady,1900,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-2150,road,A,steady,2150,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-2400,road,B,steady,2400,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-2700,road,A,steady,2700,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-3000,road,B,steady,3000,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-3400,road,A,steady,3400,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-3800,road,B,steady,3800,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-4250,road,A,steady,4250,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-4750,road,B,steady,4750,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-5300,road,A,steady,5300,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-5900,road,B,steady,5900,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+SS-PART-6500,road,A,steady,6500,light,low,Normal,off,8,2,CAB,engine_int,Constant speed so rpm holds steady
+PULL-REF,road,B,ramp,1500->limiter,full (WOT),2,Normal,off,,2,CAB,reference,Normal-speed pull; A/B reference for the finished bank
+UP-WOT,road,A,one-shot,~6000,full (WOT),1>2 2>3 3>4,Normal,off,,5,CAB,gear_int,Paddle upshift at WOT
+UP-PART,road,B,one-shot,~3500,part,2>3 3>4,Normal,off,,5,CAB,gear_int,Soft upshift
+DOWN,road,A,one-shot,~3000,overrun,4>3 3>2,Normal,off,,5,CAB,gear_int,"Rev-match blip, if Normal mode does one"
+LIFT,road,A,one-shot,4000+ then lift,full->0,3,Normal,off,,6,CAB,turbo,Sharp lift from WOT: diverter-valve whoosh
+CRUISE-WHINE,road,B,steady,~2000-2500,light,6-8,Normal,off,15,2,CAB,transmission,"Steady cruise, then coast; gearbox whine"
+IDLE-N,road,A,idle,idle,none,Neutral/P,N,ON,30,2,CAB,engine_ext,"Stationary, warm engine; N mode idles higher"
+LIMIT-N,road,A,steady,limiter,full (WOT),2,N,ON,2,3,CAB,limiter engine_ext,"Brief hold, only if manual mode holds the gear"
+PULL-LO-N,road,A,ramp,1000->4000,full (WOT),highest that fits,N,ON,,4,CAB,engine_ext turbo,WOT from ~1000 rpm; at least 6 s to reach 4000
+PULL-HI-N,road,A,ramp,3000->limiter,full (WOT),3 or 4,N,ON,,4,CAB,engine_ext turbo,WOT from ~3000 rpm to the limiter; at least 7-8 s
+COAST-HI-N,road,A,ramp,limiter->1500,overrun (0%),3 or 4,N,ON,,4,CAB,engine_ext,"Lift fully from near the limiter, stay in gear, no brakes"
+COAST-LO-N,road,A,ramp,3000->1000,overrun (0%),5 or 6,N,ON,,3,CAB,engine_ext,Lift from ~3000 in a high gear
+SS-PART-900-N,road,B,steady,900,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-1000-N,road,A,steady,1000,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-1150-N,road,B,steady,1150,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-1300-N,road,A,steady,1300,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-1500-N,road,B,steady,1500,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-1700-N,road,A,steady,1700,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-1900-N,road,B,steady,1900,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-2150-N,road,A,steady,2150,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-2400-N,road,B,steady,2400,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-2700-N,road,A,steady,2700,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-3000-N,road,B,steady,3000,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-3400-N,road,A,steady,3400,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-3800-N,road,B,steady,3800,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-4250-N,road,A,steady,4250,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-4750-N,road,B,steady,4750,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-5300-N,road,A,steady,5300,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-5900-N,road,B,steady,5900,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+SS-PART-6500-N,road,A,steady,6500,light,low,N,ON,8,2,CAB,engine_ext,Constant speed so rpm holds steady
+PULL-REF-N,road,B,ramp,1500->limiter,full (WOT),2,N,ON,,2,CAB,reference,Normal-speed pull; A/B reference for the finished bank
+UP-WOT-N,road,A,one-shot,~6000,full (WOT),1>2 2>3 3>4,N,ON,,5,CAB,gear_ext,Paddle upshift at WOT: spark-cut crack
+DOWN-N,road,A,one-shot,~3000,overrun,4>3 3>2,N,ON,,5,CAB,gear_ext,Rev-match blip
+LIFT-N,road,A,one-shot,5000+ then lift,full->0,3,N,ON,,8,CAB,backfire_int backfire_ext turbo,"Sharp lift from WOT, stay off 3 s: pops and crackles"

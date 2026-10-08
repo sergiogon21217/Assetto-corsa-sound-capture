@@ -12,7 +12,7 @@ from reportlab.lib.units import mm
 from reportlab.lib.styles import ParagraphStyle
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
-from reportlab.platypus import (KeepTogether, Paragraph, SimpleDocTemplate,
+from reportlab.platypus import (KeepTogether, PageBreak, Paragraph, SimpleDocTemplate,
                                 Spacer, Table, TableStyle)
 
 HERE = Path(__file__).parent
@@ -31,6 +31,7 @@ MUTED = colors.HexColor("#656d76")
 RULE = colors.HexColor("#d0d7de")
 BAND = colors.HexColor("#f2f4f7")
 WARN = colors.HexColor("#fde68a")
+PASS_A_BAND = colors.HexColor("#dbeafe")
 TIER_BG = {"A": colors.HexColor("#dbeafe"), "B": colors.HexColor("#ede9fe"),
            "C": colors.HexColor("#f1f5f9")}
 
@@ -54,30 +55,49 @@ ss = lambda kind, rpms: [f"SS-{kind}-{r}" for r in rpms]
 # Entries are take ids, or (take_id, reps_override, label_suffix).
 TIER_A = [1000, 1300, 1700, 2150, 2700, 3400, 4250, 5300, 6500]
 TIER_B = [900, 1150, 1500, 1900, 2400, 3000, 3800, 4750, 5900]
-RUNS = [
+SHIFTS = [("UP-WOT", 5, " 1>2"), ("UP-WOT", 5, " 2>3"), ("UP-WOT", 5, " 3>4")]
+DOWNS = [("DOWN", 5, " 4>3"), ("DOWN", 5, " 3>2")]
+
+
+def n(entries):
+    """Pass B version of a take list: same takes with the -N suffix."""
+    return [(t[0] + "-N",) + t[1:] if isinstance(t, tuple) else t + "-N" for t in entries]
+
+
+GEARS = "Gears from the test run: PULL-LO in ____  PULL-HI in ____ (same in both passes). "
+PRE = [
     ("0  Noise", "Engine off parked; then steady ~80 km/h in top gear, barely on throttle.",
      ["NOISE-PARK", "NOISE-CRUISE"]),
-    ("1  Idle", "Stationary, gearbox in Neutral/P. Settled idle rpm: Normal ______  N mode ______",
-     ["IDLE", "IDLE-NMODE"]),
-    ("2  Level check", "First take sets gains to about -6 dBFS peaks, then LOCK them.",
-     ["LIMIT"]),
-    ("3  Full-load pulls", "Gears from the test run: PULL-LO in ____  PULL-HI in ____. "
-     "Full pedal, no changes mid-pull, <= 500 rpm/s.", ["PULL-LO", "PULL-HI"]),
-    ("4  Coast-downs", "Lift fully, stay in gear, no brakes until the take ends.",
-     ["COAST-HI", "COAST-LO"]),
-    ("5a Part-load holds, tier A", "8 s steady. Use 1st/2nd for the high-rpm points.",
-     ss("PART", TIER_A)),
-    ("5b Part-load holds, tier B", "", ss("PART", TIER_B)),
-    ("6  Reference", "", ["PULL-REF"]),
-    ("7  Shifts", "Reps are per shift.",
-     [("UP-WOT", 5, " 1>2"), ("UP-WOT", 5, " 2>3"), ("UP-WOT", 5, " 3>4"),
-      "UP-PART", ("DOWN", 5, " 4>3"), ("DOWN", 5, " 3>2")]),
-    ("8  Lift-offs", "POP-N only if you want pops (N mode, ESG still off).", ["LIFT", "POP-N"]),
-    ("9  Whine", "", ["CRUISE-WHINE"]),
-    ("10 ESG reference: switch ESG ON",
-     "Reference only, not used in the bank. Switch ESG back OFF afterwards.",
-     ["IDLE-ESG", "PULL-REF-ESG", "PART-ESG-2150", "PART-ESG-4250"]),
+    ("1  Gain check: N mode + ESG ON", "Loudest case. Set gain to about -6 dBFS peaks, "
+     "then LOCK it for the whole day.", ["GAIN-CHECK"]),
 ]
+
+
+def pass_blocks(p, idle_label, extra):
+    sfx = (lambda x: n(x)) if p == "B" else (lambda x: x)
+    return [
+        (f"{p}1 Idle", f"Stationary, gearbox in Neutral/P. Settled idle rpm: ______ ({idle_label})",
+         sfx(["IDLE"])),
+        (f"{p}2 Limiter", "Brief hold in 2nd.", sfx(["LIMIT"])),
+        (f"{p}3 Full-load pulls", GEARS + "Full pedal, no changes mid-pull.",
+         sfx(["PULL-LO", "PULL-HI"])),
+        (f"{p}4 Coast-downs", "Lift fully, stay in gear, no brakes until the take ends.",
+         sfx(["COAST-HI", "COAST-LO"])),
+        (f"{p}5a Part-load holds, tier A", "8 s steady. Use 1st/2nd for the high-rpm points.",
+         sfx(ss("PART", TIER_A))),
+        (f"{p}5b Part-load holds, tier B", "", sfx(ss("PART", TIER_B))),
+        (f"{p}6 Reference", "", sfx(["PULL-REF"])),
+    ] + extra
+
+
+PASS_A = pass_blocks("A", "Normal", [
+    ("A7 Shifts, lift-offs, whine", "Shift reps are per shift.",
+     SHIFTS + ["UP-PART"] + DOWNS + ["LIFT", "CRUISE-WHINE"]),
+])
+PASS_B = pass_blocks("B", "N mode", [
+    ("B7 Shifts and lift-offs", "Shift reps are per shift. LIFT-N: stay off the throttle "
+     "3 s after lifting, for pops.", n(SHIFTS) + n(DOWNS) + ["LIFT-N"]),
+])
 
 WIDTHS = [37 * mm, 29 * mm, 10 * mm, 24 * mm, 30 * mm, 16 * mm, 12 * mm,
           22 * mm, 12 * mm, 75 * mm]
@@ -125,7 +145,7 @@ def column_header():
     return t
 
 
-def block_table(name, note, takes):
+def block_table(name, note, takes, band=None):
     """One run-order block. The block band repeats if the block breaks across pages."""
     ids = [t[0] if isinstance(t, tuple) else t for t in takes]
     notes = {rows[i]["notes"] for i in ids}
@@ -135,7 +155,7 @@ def block_table(name, note, takes):
     label = f"<b>{arrows(name)}</b>" + (f"   <font color='#656d76'>{arrows(note)}</font>"
                                          if note else "")
     data = [[Paragraph(label, S["cell"])] + [""] * (len(HEAD) - 1)]
-    band = WARN if "ESG ON" in name else BAND  # make the ESG-on block impossible to miss
+    band = band or (WARN if "ESG ON" in name else BAND)  # ESG-on blocks stand out
     style = BASE_STYLE + [("SPAN", (0, 0), (-1, 0)), ("BACKGROUND", (0, 0), (-1, 0), band),
                           ("LINEABOVE", (0, 0), (-1, 0), 0.6, RULE)]
     seen = set()
@@ -157,19 +177,31 @@ def block_table(name, note, takes):
     return table
 
 
-def session(title, blocks):
-    """Session title + column header stay with the first block; short blocks stay whole."""
-    out = [KeepTogether([Paragraph(title, S["h"]), column_header(), block_table(*blocks[0])])]
+def banner(title, note, colour):
+    t = Table([[Paragraph(f"<b>{title}</b>   {note}", S["blk"])]], colWidths=[sum(WIDTHS)])
+    t.setStyle(TableStyle([("BACKGROUND", (0, 0), (-1, -1), colour),
+                           ("TOPPADDING", (0, 0), (-1, -1), 5),
+                           ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+                           ("LEFTPADDING", (0, 0), (-1, -1), 6)]))
+    return t
+
+
+def session(title, blocks, note="", band=None):
+    """Session banner + column header stay with the first block; short blocks stay whole."""
+    head = banner(title, note, band) if band else Paragraph(title, S["h"])
+    out = [KeepTogether([Spacer(1, 6), head, Spacer(1, 3), column_header(),
+                         block_table(*blocks[0], band=band)])]
     for b in blocks[1:]:
-        t = block_table(*b)
+        t = block_table(*b, band=band)
         out.append(KeepTogether([t]) if len(b[2]) <= 10 else t)
     return out
 
 
 def header():
-    settings = ["Normal drive mode", "ESG OFF (check menu; ON only in block 10)", "Manual / paddle mode",
+    settings = ["Mode + ESG for the pass, checked in menu", "Pass name said into recorder",
+                "Manual / paddle mode",
                 "A/C, fan, radio off", "Windows + sunroof closed, no rattles", "Warm engine",
-                "Dash video on (optional)", "Gains locked after LIMIT", "Say take ID + gear, clap, go"]
+                "Dash video on (optional)", "Gain locked since gain check", "Say take ID + gear, clap, go"]
     cells = [Paragraph(f"{BOX}  {s}", S["cell"]) for s in settings]
     grid = Table([cells[0:3], cells[3:6], cells[6:9]], colWidths=[89 * mm] * 3)
     grid.setStyle(TableStyle([("BOX", (0, 0), (-1, -1), 0.6, RULE),
@@ -181,8 +213,9 @@ def header():
                    colWidths=[50 * mm, 70 * mm, 75 * mm, 72 * mm])
     return [
         Paragraph("Kona N sound capture: shot list", S["title"]),
-        Paragraph("Cabin-only (CAB + optional FWL footwell) · 48 kHz / 24-bit WAV · "
-                  "file name: &lt;take&gt;_r&lt;rep&gt;_&lt;channel&gt;.wav · "
+        Paragraph("One phone in the cabin (RecForge II) · 48 kHz WAV · "
+                  "Pass A: Normal + ESG off · Pass B: N + ESG ON · "
+                  "file name: &lt;take&gt;_r&lt;rep&gt;.wav · "
                   "say the take ID out loud, clap, then record · "
                   "Private road, same direction every run", S["sub"]),
         Spacer(1, 4), fields, Spacer(1, 4),
@@ -206,7 +239,12 @@ def main():
                             rightMargin=12 * mm, topMargin=10 * mm, bottomMargin=12 * mm,
                             title="Kona N sound capture: shot list", author="")
     story = header()
-    story += session("Run order", RUNS)
+    story += session("Before the passes", PRE)
+    story += session("PASS A", PASS_A, "Normal mode, ESG OFF. Say \"pass A\" into the recorder.",
+                     PASS_A_BAND)
+    story += [PageBreak()]
+    story += session("PASS B", PASS_B, "Switch to N mode, ESG ON. Same gears as pass A. "
+                     "Say \"pass B\" into the recorder.", WARN)
     doc.build(story, onFirstPage=footer, onLaterPages=footer)
     print(out)
 
