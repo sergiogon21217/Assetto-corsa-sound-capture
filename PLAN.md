@@ -85,7 +85,10 @@ Write down which market your recording car is from.
 
 **Decided:** record **cabin-only**, in **Normal mode**, with the **ESG off**. The
 exterior sound is derived from the cabin recordings with EQ plus a light reverb in FMOD
-(see `recording/RECORDING_PLAN.md` §8).
+(see `recording/RECORDING_PLAN.md` §9). Recording is on a **straight private road**
+(no dyno): full-load loops come from slow WOT pulls and off-throttle loops from
+coast-downs, both sliced and pitch-flattened at each grid rpm; part-load loops are
+recorded as true constant-speed holds.
 
 ### 2.3 If you can't get a car
 Using other people's recordings (YouTube, sound libraries) is only OK with
@@ -104,8 +107,8 @@ for this repo (§6).
    - from the OBD log, or
    - from audio: a spectrogram/FFT peak of the 2nd engine order,
      `rpm = f_peak × 30`. At 3,000 rpm that's a 100 Hz fundamental.
-3. **Cut loops**: from steady-state takes (or short, nearly constant-rpm
-   windows of ramps), take 0.5–2 s. Cut at zero crossings, and cut a
+3. **Cut loops**: from steady-state takes, or from short windows of the road
+   sweeps after resampling each window to a constant pitch using the tracked rpm, take 0.5–2 s. Cut at zero crossings, and cut a
    whole number of combustion cycles (1 cycle = 120 / rpm seconds for all 4 cylinders) so
    the loop doesn't "tick".
    - Target set: about 10–16 loops per layer, for example 800 (idle), 1000, 1500, 2000,
@@ -197,9 +200,10 @@ Milestones:
 
 - **Which Kona N mod?** Folder name, `engine.ini` rpm limits and whether the
   author allows sound replacements. This needs to be answered first.
-- **Access to a car / dyno.** Road-only takes give ramps with background
-  noise. That's workable, but it takes more cleanup.
+- **Road-only capture (decided).** Sweeps instead of steady holds, plus wind/tyre
+  noise at speed. Workable with slow sweeps, OBD rpm tracking and a rolling noise
+  profile, but processing has to pitch-flatten each slice before looping.
 - ~~**ESG in the cabin.**~~ Decided: ESG off, mechanical sound only.
 - **FMOD 1.08 availability.** Old versions are downloadable from the FMOD site
   archive with a free account.
-- **Legal/safety**: record WOT pulls only on a closed course or dyno.
+- **Legal/safety**: record WOT pulls only on the closed private road, with it kept clear.

@@ -1,35 +1,48 @@
-# Kona N recording plan (cabin-only)
+# Kona N recording plan (cabin-only, private road)
 
 The exact list of what to record, where, and with what, for the Assetto Corsa
 sound bank described in [`../PLAN.md`](../PLAN.md).
 
-**Capture setup decided:** everything is recorded **inside the car**, in
-**Normal drive mode**, with the **ESG (sound enhancer) off**. There are no exterior
-microphones. The exterior sound (`*_ext` events) is derived from the cabin
-recordings afterwards (§8).
+**Capture setup decided:**
+- Everything recorded **inside the car**. No exterior microphones; the exterior sound
+  (`*_ext` events) is derived from the cabin recordings afterwards (§9).
+- **Normal drive mode**, **ESG (sound enhancer) off**.
+- On a **straight private road**. No dyno, so no dyno roller/fan whine, but also no way
+  to hold full throttle at a fixed rpm (§1).
 
-The machine-readable shot list is [`shotlist.csv`](shotlist.csv) (66 takes). Print it
-or load it on a tablet on the day, and tick takes off as you go.
+The machine-readable shot list is [`shotlist.csv`](shotlist.csv) (33 takes). The printable
+version is [`shotlist_checklist.pdf`](shotlist_checklist.pdf).
 
 ---
 
-## 1. Sessions
+## 1. Method: what a road can and can't give
 
-| Session | Where | What it gives | Time needed |
-|---|---|---|---|
-| **Dyno** (primary) | Chassis dyno with load control (eddy-current or similar), 2WD/FWD | Steady-rpm engine loops: the core of the bank | 1.5–2 h booking (about 30–40 min of actual running) |
-| **Road** | Quiet road, private road or track | Shifts, lift-offs, gearbox whine | 30–60 min |
+AC's engine sound is built from **loops at fixed rpm**, in on-throttle and off-throttle
+sets. On a flat road:
 
-The dyno matters because AC's engine sound is built from **loops at fixed rpm**.
-On the road, a WOT pull goes up about 1,000 rpm per second, which is too fast to
-cut clean loops. Only a dyno can hold the car at exactly 3,400 rpm under full load
-for 8 seconds.
+| Layer | How it's captured | Why |
+|---|---|---|
+| **Full load (ON)** | **Slow WOT pulls** in a high gear, sliced at each grid rpm afterwards | The engine can't be held at a fixed rpm at WOT without a dyno. A high gear makes the rpm rise slowly |
+| **Off-throttle (OFF)** | **Coast-downs** in gear | Engine braking in a high gear slows the decay, the same as on a dyno |
+| **Part load** | **Truly steady**: drive at constant speed so rpm is fixed | The one layer a road gives cleanly; it also helps the ON/OFF crossfade |
+| Idle, shifts, lift-offs, whine | As before | |
 
-Ask the dyno shop two questions when booking:
-1. *Can you hold a steady rpm under load (steady-state / constant-speed mode)?* You need yes.
-2. *Can the dyno motor the car (drive the wheels with the engine off-throttle)?* This is rare.
-   If yes, record the `SS-OFF` takes. If no, the off-throttle layer comes from
-   coast-downs (`CD-OFF`) instead.
+**How the sweeps become loops:** the processing tools track the rpm through each pull
+(from OBD plus the engine tone), resample a short slice around each grid rpm so its pitch
+is flat, and then cut it to a whole number of engine cycles. This works well if the sweep
+is slow. **Aim for 500 rpm per second or less**: at that rate a 0.25 s slice only moves
+about 125 rpm, which is easy to flatten.
+
+**Gear choice is a trade-off:**
+- Higher gear: slower sweep (better loops), but more speed, so more wind and tyre noise in
+  the cabin, and more road needed.
+- Lower gear: less road and less wind noise, but faster sweeps.
+
+Pick gears using the test run in §5. Splitting the range into a **low pull (1000→4000)** and
+a **high pull (3000→limiter)** means each pull can use the best gear for its part of the range.
+
+**Don't hold rpm under load with the brake** (throttle against the left foot). It overheats
+the brakes and the DCT clutch quickly, and the brake noise gets into the recording.
 
 ---
 
@@ -37,12 +50,13 @@ Ask the dyno shop two questions when booking:
 
 - **Drive mode: Normal.** Use the same mode for every take, because the exhaust valve,
   throttle mapping and shift behaviour change between modes.
-- **ESG off.** Check this in the N/vehicle settings menu before starting, and check it
-  again after any restart, because some settings reset.
-- **Manual/paddle shifting**, so the gearbox holds 4th on the dyno and shifts when you choose.
-- A/C and fan off, radio off, windows up, phone on silent, no loose items in the cabin
-  (rattles end up in every loop).
-- Warm engine (oil at temperature) before any take.
+- **ESG off.** Check it in the settings menu before starting, and after any restart.
+- **Manual/paddle shifting**, so the gearbox holds the gear through each pull.
+- A/C and fan off, radio off, **windows and sunroof closed**, phone on silent, nothing loose
+  in the cabin (rattles end up in every loop).
+- Warm engine (oil at temperature) before any take. Tyre pressures normal.
+- **Same direction for every run** if there's any wind or slope, so takes match. Note the
+  direction in the log.
 
 ---
 
@@ -51,108 +65,97 @@ Ask the dyno shop two questions when booking:
 | Channel | Mic | Placement | Feeds |
 |---|---|---|---|
 | **CAB** (required) | Stereo handheld recorder (Zoom/Tascam type) or a phone with a decent app, WAV | Clamped (not held) between the front seats at driver's head height, pointing forward | `engine_int`, `gear_int`, `transmission`, and the base of all `*_ext` |
-| **FWL** (optional, recommended) | Second recorder or phone | Passenger footwell, close to the firewall, on a foam pad (not touching metal) | Darker, more engine and less cabin; a better base for the exterior version (§8), and some turbo sound |
-| **OBD** | OBD-II dongle + logging app (OBDLink + Torque/RealDash or similar) | OBD port | rpm, pedal %, boost/MAP, gear, speed, intake temp at ≥ 10 Hz, for tagging every clip |
+| **FWL** (optional, recommended) | Second recorder or phone | Passenger footwell, close to the firewall, on a foam pad (not touching metal) | Darker, more engine and less wind; a better base for the exterior version (§9) |
+| **OBD** | OBD-II dongle + logging app (OBDLink + Torque/RealDash or similar) | OBD port | rpm, pedal %, boost/MAP, gear, speed, intake temp at ≥ 10 Hz. **Essential for road sweeps**: it gives the rpm curve the slicing uses |
 
 Recorder settings: **48 kHz, 24-bit** (or 32-bit float), WAV. Not MP3, and not a phone's
 default voice-memo format.
 
-Set gains once on the first `LIMIT` take so peaks land around **−6 dBFS**, then
-**don't change them** for the rest of the day. The loops need the real loudness
-differences between rpm points. If you use two recorders, **clap at the start and end of
-every block** so they can be synced.
+Set gains on the first `LIMIT` take so peaks land around **−6 dBFS**, then **don't change
+them**. If you use two recorders plus the OBD logger, **clap at the start of every run**
+and blip the throttle once at idle: the clap syncs the recorders and the blip lines the
+audio up with the OBD rpm trace.
 
 ---
 
 ## 4. The rpm grid
 
-Points are spaced about **2 semitones** apart (ratio ≈ 1.12), so neighbouring loops
-never need to be pitch-shifted more than about ±1 semitone at a crossfade. That's
-where pitch-shifting stops being audible.
+The same 19 points as before. For the pulls and coasts they're **slice centres** (where
+loops get cut from the sweeps); for the part-load layer they're **actual hold points**.
 
-- **Tier A** points are every other point, about 4 semitones apart. They're enough for a
-  first working bank. Record them first.
-- **Tier B** points fill the gaps. Record them if time and heat allow.
+Points are spaced about **2 semitones** apart (ratio ≈ 1.12), so neighbouring loops never
+need more than about ±1 semitone of pitch shift at a crossfade.
 
-| rpm | Tier | Main tone (2nd order) Hz | 1 engine cycle (ms) | Cycles in a ~1 s loop |
-|---:|:--:|---:|---:|---:|
-| 800 (idle) | A | 26.7 | 150.0 | 7 |
-| 900 | B | 30.0 | 133.3 | 7 |
-| 1000 | A | 33.3 | 120.0 | 8 |
-| 1150 | B | 38.3 | 104.3 | 10 |
-| 1300 | A | 43.3 | 92.3 | 11 |
-| 1500 | B | 50.0 | 80.0 | 12 |
-| 1700 | A | 56.7 | 70.6 | 14 |
-| 1900 | B | 63.3 | 63.2 | 16 |
-| 2150 | A | 71.7 | 55.8 | 18 |
-| 2400 | B | 80.0 | 50.0 | 20 |
-| 2700 | A | 90.0 | 44.4 | 22 |
-| 3000 | B | 100.0 | 40.0 | 25 |
-| 3400 | A | 113.3 | 35.3 | 28 |
-| 3800 | B | 126.7 | 31.6 | 32 |
-| 4250 | A | 141.7 | 28.2 | 35 |
-| 4750 | B | 158.3 | 25.3 | 40 |
-| 5300 | A | 176.7 | 22.6 | 44 |
-| 5900 | B | 196.7 | 20.3 | 49 |
-| 6500 | A | 216.7 | 18.5 | 54 |
-| limiter | A | – | – | – |
+| rpm | Tier | Main tone (2nd order) Hz | 1 engine cycle (ms) |
+|---:|:--:|---:|---:|
+| 800 (idle) | A | 26.7 | 150.0 |
+| 900 | B | 30.0 | 133.3 |
+| 1000 | A | 33.3 | 120.0 |
+| 1150 | B | 38.3 | 104.3 |
+| 1300 | A | 43.3 | 92.3 |
+| 1500 | B | 50.0 | 80.0 |
+| 1700 | A | 56.7 | 70.6 |
+| 1900 | B | 63.3 | 63.2 |
+| 2150 | A | 71.7 | 55.8 |
+| 2400 | B | 80.0 | 50.0 |
+| 2700 | A | 90.0 | 44.4 |
+| 3000 | B | 100.0 | 40.0 |
+| 3400 | A | 113.3 | 35.3 |
+| 3800 | B | 126.7 | 31.6 |
+| 4250 | A | 141.7 | 28.2 |
+| 4750 | B | 158.3 | 25.3 |
+| 5300 | A | 176.7 | 22.6 |
+| 5900 | B | 196.7 | 20.3 |
+| 6500 | A | 216.7 | 18.5 |
+| limiter | A | – | – |
 
-- **Main tone** = rpm / 30 Hz (4-cylinder, 4-stroke). Use it on a spectrogram to
-  confirm the actual rpm of each clip.
-- **Cycle** = 120 / rpm seconds, one full firing sequence of all 4 cylinders. Loops are
-  cut as a whole number of cycles at the *measured* rpm. The column is only a guide.
-- **6500** assumes a limiter around 6,700–6,800 rpm. If the mod's `engine.ini` or the
-  real car says otherwise, move the top point to about 200–300 rpm below the limiter.
-- **Idle**: use the car's real warm idle for the 800 row.
+- **Main tone** = rpm / 30 Hz (4-cylinder, 4-stroke). It's how the tools track rpm through
+  a sweep, and how you can check any clip on a spectrogram.
+- **Cycle** = 120 / rpm seconds, one full firing sequence. Loops are cut as whole cycles.
+- **6500** assumes a limiter around 6,700–6,800 rpm. Adjust it if the mod's `engine.ini` or
+  the real car says otherwise.
+- **Tier A** points are every other point and are enough for a first working bank; **tier B**
+  fills the gaps. For the sweeps this doesn't matter (every pull crosses every point), but
+  for the part-load holds, do tier A first.
 
 ---
 
-## 5. Dyno session: run order
+## 5. Test run (before recording)
 
-All in Normal mode, ESG off, 4th gear in manual mode.
+One run with OBD logging only, to choose gears for your road:
 
-**Heat management:** run in blocks of **at most 5 WOT points**, then idle or cool down
-for 2–3 minutes with the dyno fans on. Watch the intake air temperature on the OBD app,
-and pause if it keeps climbing.
+1. From ~1000 rpm, WOT in **5th** (or the highest gear you'd consider). Note the rpm and
+   speed when you reach the safe braking point. Note the sweep rate (rpm/s) in the log.
+2. From ~3000 rpm, WOT in **4th**, then **3rd**. Which one reaches the limiter before the
+   braking point?
+3. Pick:
+   - `PULL-LO` gear: the highest gear where 1000→4000 fits the road.
+   - `PULL-HI` gear: the highest gear where 3000→limiter fits the road.
+   - If neither 3rd nor 4th reaches the limiter, do the high pull in two halves
+     (3000→5000, then 4500→limiter) and log it.
+4. Check the cabin for wind whistle at the top speed. If it's loud, drop a gear.
 
-| # | Block | Takes (see `shotlist.csv`) | Notes |
+---
+
+## 6. Run order
+
+All in Normal mode, ESG off, manual mode. Say the take ID out loud before each run
+(e.g. "pull low, run two"), clap, blip, then go.
+
+| # | Block | Takes | Notes |
 |---|---|---|---|
-| 0 | Setup | `NOISE-DYNO` | 30 s engine off, fans on (gives a noise profile for cleanup). Clap. |
-| 1 | Idle | `IDLE` ×2 | 30 s each |
-| 2 | Level check | `LIMIT` ×1 | Set gains here, then lock them |
-| 3 | Reference ramps | `RAMP-ON` ×3 | Slow sweep; used later to A/B the finished bank |
-| 4 | ON, tier A, low | `SS-ON-1000 1300 1700 2150 2700` | Stabilise, then **8 s hold**. 2 reps each. Cool down after |
-| 5 | ON, tier A, high | `SS-ON-3400 4250 5300 6500`, `LIMIT` ×2 | Cool down after |
-| 6 | OFF | `CD-OFF` ×4 **or** `SS-OFF-*` (motoring dyno only) | Coast-down in 5th: lift fully from 6500 and let the rollers spin down as slowly as possible |
-| 7 | ON, tier B | `SS-ON-900 1150 1500 1900 2400` / `3000 3800 4750 5900` | Two blocks with a cool-down between |
-| 8 | Optional | `SS-MID-*` (tier C) | Part-throttle layer, 6 s holds, one rep |
-| 9 | Close | Clap | |
+| 0 | Noise | `NOISE-PARK`, `NOISE-ROLL` | Engine off parked; then rolling in neutral at speed (only if safe). Used to clean up wind/tyre noise |
+| 1 | Idle | `IDLE` ×2 | 30 s each, stationary |
+| 2 | Level check | `LIMIT` ×3 | First one sets the gains: lock them after. Skip if the gearbox upshifts at the limiter |
+| 3 | Full-load pulls | `PULL-LO` ×4, `PULL-HI` ×4 | Smooth, full pedal, no pedal changes mid-pull. Let the engine and intake cool on the drive back |
+| 4 | Coast-downs | `COAST-HI` ×4, `COAST-LO` ×3 | Lift fully, stay in gear, no brakes until the take ends |
+| 5 | Part-load holds | `SS-PART-*` ×2 each (tier A first) | Constant speed, steady rpm for 8 s. Use 1st/2nd for the high-rpm points to keep the speed sensible |
+| 6 | Reference | `PULL-REF` ×2 | Ordinary 2nd-gear pull, for A/B comparison later |
+| 7 | One-shots | `UP-WOT`, `UP-PART`, `DOWN`, `LIFT`, `POP-N` (optional) | Reps per shift as in the shot list |
+| 8 | Whine | `CRUISE-WHINE` ×2 | Steady cruise in 6th–8th, then coast |
 
-Each `SS-*` take: **say the take ID out loud** before it starts (e.g. "S S on thirty-four
-hundred, take one"), then clap, stabilise the rpm, and hold. The spoken slate makes
-sorting files trivial.
-
-Rough WOT budget: 18 ON points × 2 reps × ~18 s ≈ **11 minutes of full load**, spread
-over 4 blocks.
-
----
-
-## 6. Road session: run order
-
-Normal mode, ESG off. Do WOT runs only where it's legal and safe.
-
-| Takes | Reps | How |
-|---|---|---|
-| `NOISE-ROAD` | 1 | 30 s parked, engine off |
-| `UP-WOT` | 5 per shift | WOT to about 6,000 rpm, paddle upshift 1→2, 2→3, 3→4 |
-| `UP-PART` | 5 | Around 3,500 rpm, part throttle |
-| `DOWN` | 5 per shift | Braking downshifts 4→3, 3→2 around 3,000 rpm |
-| `LIFT` | 6 | WOT to 4,000+ in 3rd, then lift sharply and stay off for 3 s. Captures the turbo whoosh and any pops |
-| `POP-N` (optional) | 8 | **Only if you want pops in the mod.** Normal mode gives few or none, so this is the one exception: N mode with ESG still off. Leave it out for a fully "Normal" car |
-| `CRUISE-WHINE` | 2 | 15 s steady cruise in 6th–8th, then 15 s coasting |
-
-Not recorded: horn and drive-by (they need an exterior mic). Keep the horn from the
-car mod's current bank or from the AC default.
+Four pulls of each kind is deliberate: road takes vary (wind, gusts, a passing car), and
+the best slice at each rpm can come from a different run.
 
 ---
 
@@ -160,57 +163,52 @@ car mod's current bank or from the AC default.
 
 | FMOD event | Built from | Minimum usable set |
 |---|---|---|
-| `engine_int` | CAB: `IDLE`, `SS-ON-*`, `SS-OFF-*` or `CD-OFF` windows, `LIMIT` | 10 tier-A ON loops + 10 OFF loops |
-| `engine_ext` | FWL (or CAB) loops, processed as in §8 | same loops |
-| `turbo` | FWL/CAB: `LIFT` (whoosh); whistle from `SS-ON-*` if it's audible | 2–3 lift-off variations |
-| `gear_int` / `gear_ext` | `UP-WOT`, `UP-PART`, `DOWN` (ext version processed as in §8) | 3 variations each |
-| `backfire_int` / `_ext` | `LIFT` or `POP-N`, if any pops are captured | 4+ variations, or leave the event silent |
-| `limiter` | `LIMIT` | 1 clean 2–3 s bounce loop |
+| `engine_int` | CAB: `IDLE`, slices of `PULL-LO`/`PULL-HI` (ON), `COAST-HI`/`COAST-LO` (OFF), `SS-PART-*`, `LIMIT` | 10 tier-A ON slices + 10 OFF slices |
+| `engine_ext` | FWL (or CAB), the same takes, processed as in §9 | same |
+| `turbo` | FWL/CAB: `LIFT` (whoosh); whistle from the pulls if it's audible | 2–3 lift-off variations |
+| `gear_int` / `gear_ext` | `UP-WOT`, `UP-PART`, `DOWN` | 3 variations each |
+| `backfire_int` / `_ext` | `LIFT` or `POP-N`, if any pops are captured | 4+ variations, or leave silent |
+| `limiter` | `LIMIT` | 1 clean bounce loop |
 | `transmission` | `CRUISE-WHINE` | 1 loop |
 | `horn` | not recorded; keep the existing one | – |
-| — (reference) | `RAMP-ON` | For comparing the finished bank with reality |
+| — (reference) | `PULL-REF` | For comparing the finished bank with reality |
 
 ---
 
-## 8. Building the exterior sound from cabin recordings
+## 8. Naming and the take log
 
-Reverb on its own won't make a cabin recording sound like it's outside. A cabin
-recording differs from an exterior one mainly in **frequency balance**: the
-cabin adds a low "boom" and the bodywork filters out the high exhaust rasp.
-So the processing order is:
-
-1. **Start from the FWL loops** if you have them (closer to the engine, less cabin
-   resonance). Otherwise use the CAB loops.
-2. **EQ, remove the cabin:** high-pass around 40 Hz, then find the 1–3 cabin boom
-   peaks in roughly 60–200 Hz (they stay at the same frequency whatever the rpm)
-   and cut them 3–6 dB.
-3. **EQ, add the outside:** a gentle lift around 1–4 kHz for exhaust rasp and
-   presence, and a little high shelf. Use light saturation if it still sounds too
-   muffled.
-4. **Space last, and done in FMOD** rather than baked into the files: a short,
-   mostly early-reflection reverb (outdoor / small-space type, low wet mix of about
-   10–20%) as an effect on the `engine_ext` event or the exterior bus. That keeps the loops
-   clean (reverb tails baked into a loop click at the loop point) and lets you tune it
-   in game.
-5. Use the same EQ chain on `gear_ext` and `backfire_ext` so they match the engine.
-6. Check outside the car in game: replay chase cam and a trackside camera,
-   against a Kunos turbo FWD car at the same rpm.
-
-The same EQ settings work for every loop, so it's a single preset you apply to all
-of them.
-
----
-
-## 9. Naming and the take log
-
-Files: `<take_id>_r<rep>_<channel>.wav`, e.g. `SS-ON-3400_r1_CAB.wav`,
-`LIFT_r3_FWL.wav`. OBD log: one CSV per session, e.g. `dyno_obd.csv`.
+Files: `<take_id>_r<rep>_<channel>.wav`, e.g. `PULL-LO_r2_CAB.wav`,
+`SS-PART-3400_r1_FWL.wav`. OBD log: one CSV for the session (or one per run if the app
+allows), e.g. `road_obd.csv`.
 
 Take log columns (fill on paper or in the CSV while recording):
-`take_id, rep, clock_time, actual_rpm, gear, IAT, keep(Y/N), notes`.
+`take_id, rep, clock_time, gear, start_rpm, end_rpm, direction, IAT, keep(Y/N), notes`.
 
-Put raw files in `recordings/<session>/` (git-ignored or Git LFS, because they're large)
-and the OBD CSVs in `logs/`.
+Put raw files in `recordings/road/` (git-ignored or Git LFS, because they're large) and
+the OBD CSVs in `logs/`.
+
+---
+
+## 9. Building the exterior sound from cabin recordings
+
+Reverb on its own won't make a cabin recording sound like it's outside. A cabin
+recording differs from an exterior one mainly in **frequency balance**: the cabin adds
+a low "boom" and the bodywork filters out the high exhaust rasp. So the processing order is:
+
+1. **Start from the FWL loops** if you have them. Otherwise use the CAB loops.
+2. **Clean the wind/tyre noise** using the `NOISE-ROLL` profile. Use gentle settings; heavy
+   noise reduction leaves watery artefacts that loop audibly.
+3. **EQ, remove the cabin:** high-pass around 40 Hz, then find the 1–3 cabin boom peaks in
+   roughly 60–200 Hz (they stay at the same frequency whatever the rpm) and cut them 3–6 dB.
+4. **EQ, add the outside:** a gentle lift around 1–4 kHz for exhaust rasp and presence, and a
+   little high shelf. Use light saturation if it still sounds too muffled.
+5. **Space last, and done in FMOD** rather than baked into the files: a short, mostly
+   early-reflection reverb (outdoor / small-space type, low wet mix of about 10–20%) as an
+   effect on the `engine_ext` event or the exterior bus. That keeps the loops clean (reverb
+   tails baked into a loop click at the loop point) and lets you tune it in game.
+6. Use the same EQ chain on `gear_ext` and `backfire_ext` so they match the engine.
+7. Check outside the car in game (replay chase cam and a trackside camera) against a Kunos
+   turbo FWD car at the same rpm.
 
 ---
 
@@ -218,19 +216,20 @@ and the OBD CSVs in `logs/`.
 
 **Before the day**
 - [ ] Mod's `engine.ini`: confirm idle and limiter rpm, and adjust the top grid point
-- [ ] Dyno booked; steady-state mode confirmed; motoring yes/no noted
+- [ ] Permission for the private road; someone to keep the road clear
 - [ ] Recorder(s) set to 48 kHz / 24-bit WAV; batteries and spare SD card
 - [ ] Clamp/mount for CAB; foam pad for FWL
-- [ ] OBD logger tested (rpm, pedal, MAP/boost, gear, IAT at ≥10 Hz)
-- [ ] Printed shot list
+- [ ] OBD logger tested (rpm, pedal, MAP/boost, gear, speed, IAT at ≥10 Hz)
+- [ ] Printed checklist
 
-**In the car**
-- [ ] Normal mode, ESG off (check in the menu), manual/paddle mode, 4th gear
-- [ ] A/C, fan and radio off, windows up, cabin emptied of rattles
+**At the road**
+- [ ] Walk or drive the road: braking point marked, nothing on the surface
+- [ ] Test run done (§5); gears chosen and written on the checklist
+- [ ] Normal mode, ESG off (check the menu), manual/paddle mode
+- [ ] A/C, fan and radio off, windows and sunroof closed, cabin emptied of rattles
 - [ ] Recorders mounted, not hand-held, and not touching trim that buzzes
-- [ ] Recorder armed, OBD logging, clap
 
 **After each block**
 - [ ] Listen back to one take on headphones: no clipping, no rattles, recorder still in place
-- [ ] Log kept/rejected takes
+- [ ] Log kept/rejected takes, gear and start/end rpm
 - [ ] ESG still off and mode still Normal

@@ -1,67 +1,34 @@
 take_id,session,tier,type,target_rpm,load,gear,drive_mode,esg,hold_s,reps,channels,feeds_fmod_event,notes
-NOISE-DYNO,dyno,A,noise,0,engine off,-,-,-,30,1,CAB FWL,-,"Dyno fans running, engine off: noise profile"
-IDLE,dyno,A,idle,800,none,N/P,Normal,off,30,2,CAB FWL,engine_int engine_ext,Warm engine; the 800 point for both ON and OFF layers
-SS-ON-900,dyno,B,steady,900,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-1000,dyno,A,steady,1000,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-1150,dyno,B,steady,1150,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-1300,dyno,A,steady,1300,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-1500,dyno,B,steady,1500,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-1700,dyno,A,steady,1700,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-1900,dyno,B,steady,1900,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-2150,dyno,A,steady,2150,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-2400,dyno,B,steady,2400,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-2700,dyno,A,steady,2700,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-3000,dyno,B,steady,3000,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-3400,dyno,A,steady,3400,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-3800,dyno,B,steady,3800,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-4250,dyno,A,steady,4250,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-4750,dyno,B,steady,4750,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-5300,dyno,A,steady,5300,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-5900,dyno,B,steady,5900,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-ON-6500,dyno,A,steady,6500,full (WOT),4,Normal,off,8,2,CAB FWL,engine_int engine_ext turbo,Hold on dyno load control; start the 8 s after rpm is stable
-SS-MID-900,dyno,C,steady,900,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-1000,dyno,C,steady,1000,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-1150,dyno,C,steady,1150,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-1300,dyno,C,steady,1300,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-1500,dyno,C,steady,1500,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-1700,dyno,C,steady,1700,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-1900,dyno,C,steady,1900,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-2150,dyno,C,steady,2150,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-2400,dyno,C,steady,2400,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-2700,dyno,C,steady,2700,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-3000,dyno,C,steady,3000,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-3400,dyno,C,steady,3400,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-3800,dyno,C,steady,3800,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-4250,dyno,C,steady,4250,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-4750,dyno,C,steady,4750,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-5300,dyno,C,steady,5300,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-5900,dyno,C,steady,5900,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-MID-6500,dyno,C,steady,6500,part (~30-40% pedal),4,Normal,off,6,1,CAB FWL,engine_int engine_ext,Optional mid-load layer
-SS-OFF-900,dyno,B,steady,900,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-1000,dyno,A,steady,1000,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-1150,dyno,B,steady,1150,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-1300,dyno,A,steady,1300,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-1500,dyno,B,steady,1500,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-1700,dyno,A,steady,1700,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-1900,dyno,B,steady,1900,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-2150,dyno,A,steady,2150,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-2400,dyno,B,steady,2400,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-2700,dyno,A,steady,2700,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-3000,dyno,B,steady,3000,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-3400,dyno,A,steady,3400,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-3800,dyno,B,steady,3800,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-4250,dyno,A,steady,4250,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-4750,dyno,B,steady,4750,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-5300,dyno,A,steady,5300,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-5900,dyno,B,steady,5900,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-SS-OFF-6500,dyno,A,steady,6500,overrun (0% pedal),4,Normal,off,8,1,CAB FWL,engine_int engine_ext,Only if the dyno can MOTOR the car; otherwise use CD-OFF
-CD-OFF,dyno,A,ramp,6500->800,overrun (0% pedal),5,Normal,off,,4,CAB FWL,engine_int engine_ext,"Coast-down, slowest decel possible; OFF-layer source when dyno can't motor"
-RAMP-ON,dyno,A,ramp,1000->limiter,full (WOT),4,Normal,off,,3,CAB FWL,reference,Slow sweep (~150-300 rpm/s if dyno has sweep mode); A/B reference for the finished bank
-LIMIT,dyno,A,steady,limiter,full (WOT),4,Normal,off,3,3,CAB FWL,limiter engine_int engine_ext,Hold on limiter max 3 s
+NOISE-PARK,road,A,noise,0,engine off,-,-,-,30,1,CAB FWL,-,"Parked, engine off: background noise profile"
+NOISE-ROLL,road,B,noise,0 (idle),none,N while rolling,Normal,off,10,2,CAB FWL,-,"Coast in neutral at ~80 km/h, engine idling: wind/tyre noise profile for cleanup"
+IDLE,road,A,idle,800,none,N/P,Normal,off,30,2,CAB FWL,engine_int engine_ext,"Stationary, warm engine; the 800 point for every layer"
+LIMIT,road,A,steady,limiter,full (WOT),2,Normal,off,2,3,CAB FWL,limiter engine_int engine_ext,"Brief hold on the limiter, only if manual mode holds the gear. First take sets gains"
+PULL-LO,road,A,ramp,1000->4000,full (WOT),highest that fits,Normal,off,,4,CAB FWL,engine_int engine_ext turbo,WOT from ~1000 rpm in the highest gear the road allows; aim for <= 500 rpm/s
+PULL-HI,road,A,ramp,3000->limiter,full (WOT),3 or 4,Normal,off,,4,CAB FWL,engine_int engine_ext turbo,WOT from ~3000 rpm to the limiter in the highest gear that reaches it in your road length
+PULL-REF,road,B,ramp,1500->limiter,full (WOT),2,Normal,off,,2,CAB FWL,reference,Normal-speed pull; A/B reference for the finished bank
+COAST-HI,road,A,ramp,limiter->1500,overrun (0%),3 or 4,Normal,off,,4,CAB FWL,engine_int engine_ext backfire_int,"Lift fully from near the limiter, stay in gear, no brakes"
+COAST-LO,road,A,ramp,3000->1000,overrun (0%),5 or 6,Normal,off,,3,CAB FWL,engine_int engine_ext,Lift from ~3000 in a high gear; slow decel covers the low rpm points
+SS-PART-900,road,B,steady,900,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-1000,road,A,steady,1000,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-1150,road,B,steady,1150,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-1300,road,A,steady,1300,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-1500,road,B,steady,1500,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-1700,road,A,steady,1700,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-1900,road,B,steady,1900,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-2150,road,A,steady,2150,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-2400,road,B,steady,2400,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-2700,road,A,steady,2700,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-3000,road,B,steady,3000,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-3400,road,A,steady,3400,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-3800,road,B,steady,3800,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-4250,road,A,steady,4250,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-4750,road,B,steady,4750,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-5300,road,A,steady,5300,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-5900,road,B,steady,5900,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
+SS-PART-6500,road,A,steady,6500,light,low,Normal,off,8,2,CAB FWL,engine_int engine_ext,Constant speed so rpm holds steady
 UP-WOT,road,A,one-shot,~6000,full (WOT),1>2 2>3 3>4,Normal,off,,5,CAB FWL,gear_int gear_ext,Paddle upshift at WOT
 UP-PART,road,B,one-shot,~3500,part,2>3 3>4,Normal,off,,5,CAB FWL,gear_int gear_ext,Soft upshift
 DOWN,road,A,one-shot,~3000,overrun,4>3 3>2,Normal,off,,5,CAB FWL,gear_int gear_ext,"Rev-match blip, if Normal mode does one"
 LIFT,road,A,one-shot,4000+ then lift,full->0,3,Normal,off,,6,CAB FWL,turbo backfire_int backfire_ext,Sharp lift from WOT: diverter-valve whoosh plus any pops
 POP-N,road,B,one-shot,5000+ then lift,full->0,3,N (ESG off),off,,8,CAB FWL,backfire_int backfire_ext,Optional: only if you want pops; Normal mode gives few or none
 CRUISE-WHINE,road,B,steady,~2000-2500,light,6-8,Normal,off,15,2,CAB FWL,transmission,"Steady cruise, then coast; gearbox whine"
-NOISE-ROAD,road,A,noise,0,engine off,-,-,-,30,1,CAB FWL,-,"Ambient/cabin noise profile, parked"
