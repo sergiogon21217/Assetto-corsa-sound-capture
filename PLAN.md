@@ -172,28 +172,27 @@ for this repo (§6).
 
 ---
 
-## 6. What this repo will contain
-
-Planned layout (nothing implemented yet, this is the plan):
+## 6. What this repo contains
 
 ```
-recordings/        # raw takes (git-ignored or Git LFS; can be large)
-logs/              # take logs (checklist photos / CSV)
-tools/
-  sync.py          # align channels via slate clap
-  rpm_track.py     # rpm vs time from audio (2nd-order FFT peak)
-  cut_loops.py     # extract N-cycle loops at target rpms, zero-crossing cut
-  normalize.py     # per-layer loudness matching
-  pitch_table.py   # rpm regions + crossfade/pitch automation values for FMOD
-loops/             # processed loops (output)
-fmod/              # FMOD 1.08 project (from the AC SDK template)
-build/             # <kona_n>.bank + GUIDs.txt ready to drop into the car
+recording/         # recording plan, shot list, checklist, session inventories
+recordings/        # raw takes (git-ignored)
+processing/        # per-session config: which file is which loop source
+tools/             # processing pipeline (see tools/README.md)
+  rpm.py           # rpm vs time from audio
+  loops.py         # pitch-flattening + whole-cycle loop cutting
+  build_loops.py   # session config -> loops + manifest (with level smoothing)
+  pitch_table.py   # crossfade/pitch automation values for FMOD
+  preview.py       # listen to the loop set without FMOD
+loops/<session>/   # processed loops (output) + manifest + FMOD table
+fmod/              # FMOD 1.08 project (from the AC SDK template) - next
+build/             # <kona_n>.bank + GUIDs.txt ready to drop into the car - next
 ```
 
 Milestones:
-1. **M1: prototype**: build the pipeline on one public-domain / permitted
-   recording (or an i30 N ramp) and get a working bank in game.
-2. **M2: capture day**: record the real Kona N following §2.
+1. **M1: prototype**: pipeline built and first loop set made from the 2026-10-08
+   N-mode recordings (done); next, a working bank in game.
+2. **M2: capture day**: 2026-10-08, partial (see `recording/sessions/`).
 3. **M3: full bank**: all layers, one-shots and a mixing pass.
 4. **M4: release**: README credits (mod author, recording sources), install
    instructions, and permission from the car-mod author to ship the sound with

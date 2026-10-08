@@ -8,7 +8,7 @@ limiter N.wav,limiter,N,on,limiter,6750,3.7,limiter,confirms limiter ~6750 rpm
 1000 non n.wav,steady hold,Normal,off,1000,970,15.5,not used (bank is N-only),
 1500 non n.wav,steady hold,Normal,off,1500,1280,15.1,not used (bank is N-only),actual rpm well below label
 2000 non n.wav,steady hold,Normal,off,2000,2070,15.4,not used (bank is N-only),
-2500.wav,steady hold,Normal,off,2500,2520,15.7,not used (bank is N-only),"mode unconfirmed (no N in name, but no 2500N exists); read as Normal"
+2500.wav,steady hold,N,on,2500,2520,15.7,engine,confirmed N mode (no N in the file name)
 3000.wav,steady hold,Normal,off,3000,3045,15.1,not used (bank is N-only),no N in name: read as Normal
 3500.wav,steady hold,Normal,off,3500,3550-3850,15.3,not used (bank is N-only),rpm wanders; no N in name: read as Normal
 1000N.wav,steady hold,N,on,1000,1000,17.9,engine,

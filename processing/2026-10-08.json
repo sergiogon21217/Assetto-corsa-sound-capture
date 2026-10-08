@@ -1,0 +1,164 @@
+{
+  "recordings_dir": "recordings/2026-10-08/RecForge",
+  "out_dir": "loops/2026-10-08",
+  "grid": [
+    1000,
+    1150,
+    1300,
+    1500,
+    1700,
+    1900,
+    2150,
+    2400,
+    2700,
+    3000,
+    3400,
+    3800,
+    4250,
+    4750,
+    5300,
+    5900,
+    6500
+  ],
+  "sources": [
+    {
+      "file": "idle n.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 900
+    },
+    {
+      "file": "1000N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 1000
+    },
+    {
+      "file": "1500N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 1280
+    },
+    {
+      "file": "2500.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 2520
+    },
+    {
+      "file": "3000N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 3150
+    },
+    {
+      "file": "3500N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 3560
+    },
+    {
+      "file": "4000N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 4180
+    },
+    {
+      "file": "4500N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 4665
+    },
+    {
+      "file": "5000N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 5065
+    },
+    {
+      "file": "5500N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 5500
+    },
+    {
+      "file": "6000N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 6025
+    },
+    {
+      "file": "6500N.wav",
+      "kind": "steady",
+      "layer": "part",
+      "approx": 6250
+    },
+    {
+      "file": "1k 4k.wav",
+      "kind": "sweep",
+      "layer": "on",
+      "range": [
+        700,
+        4800
+      ],
+      "start_hint": [
+        800,
+        1300
+      ]
+    },
+    {
+      "file": "3k limit.wav",
+      "kind": "sweep",
+      "layer": "on",
+      "range": [
+        2500,
+        7000
+      ],
+      "start_hint": [
+        2700,
+        3300
+      ]
+    },
+    {
+      "file": "limit 3k.wav",
+      "kind": "sweep",
+      "layer": "off",
+      "range": [
+        2500,
+        7000
+      ],
+      "start_hint": [
+        6200,
+        6900
+      ],
+      "end_hint": [
+        2700,
+        3500
+      ]
+    },
+    {
+      "file": "3k 1k.wav",
+      "kind": "sweep",
+      "layer": "off",
+      "range": [
+        700,
+        3600
+      ],
+      "start_hint": [
+        2700,
+        3300
+      ],
+      "end_hint": [
+        800,
+        1300
+      ]
+    },
+    {
+      "file": "limiter N.wav",
+      "kind": "free",
+      "layer": "limiter",
+      "rpm": 6750,
+      "start_s": 0.3
+    }
+  ]
+}
