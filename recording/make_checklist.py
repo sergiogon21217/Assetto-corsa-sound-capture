@@ -57,7 +57,8 @@ TIER_B = [900, 1150, 1500, 1900, 2400, 3000, 3800, 4750, 5900]
 RUNS = [
     ("0  Noise", "Engine off parked; then steady ~80 km/h in top gear, barely on throttle.",
      ["NOISE-PARK", "NOISE-CRUISE"]),
-    ("1  Idle", "30 s each, stationary.", ["IDLE"]),
+    ("1  Idle", "Stationary, gearbox in Neutral/P. Settled idle rpm: Normal ______  N mode ______",
+     ["IDLE", "IDLE-NMODE"]),
     ("2  Level check", "First take sets gains to about -6 dBFS peaks, then LOCK them.",
      ["LIMIT"]),
     ("3  Full-load pulls", "Gears from the test run: PULL-LO in ____  PULL-HI in ____. "

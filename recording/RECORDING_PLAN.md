@@ -11,7 +11,7 @@ sound bank described in [`../PLAN.md`](../PLAN.md).
 - On a **straight private road**. No dyno, so no dyno roller/fan whine, but also no way
   to hold full throttle at a fixed rpm (§1).
 
-The machine-readable shot list is [`shotlist.csv`](shotlist.csv) (37 takes). The printable
+The machine-readable shot list is [`shotlist.csv`](shotlist.csv) (38 takes). The printable
 version is [`shotlist_checklist.pdf`](shotlist_checklist.pdf).
 
 ---
@@ -119,6 +119,10 @@ need more than about ±1 semitone of pitch shift at a crossfade.
 - **Cycle** = 120 / rpm seconds, one full firing sequence. Loops are cut as whole cycles.
 - **6500** assumes a limiter around 6,700–6,800 rpm. Adjust it if the mod's `engine.ini` or
   the real car says otherwise.
+- **800 (idle)** stands for the car's real warm idle **in Normal mode**, whatever it settles
+  at. **N mode idles higher**, so `IDLE-NMODE` records that too. AC has a single idle rpm (in
+  the mod's `engine.ini`): the bank's idle loop is built from whichever recording matches it,
+  or the Normal one pitched slightly if neither does.
 - **Tier A** points are every other point and are enough for a first working bank; **tier B**
   fills the gaps. For the sweeps this doesn't matter (every pull crosses every point), but
   for the part-load holds, do tier A first.
@@ -152,7 +156,7 @@ replaces a data log, so say anything unusual too ("gust", "car passed", "lifted 
 | # | Block | Takes | Notes |
 |---|---|---|---|
 | 0 | Noise | `NOISE-PARK`, `NOISE-CRUISE` ×2 | Engine off parked; then a steady ~80 km/h in top gear, barely on throttle (no coasting in neutral: it's bad for the DCT). Used to clean up wind/tyre noise; the engine is at low rpm there, so its tone is easy to separate out |
-| 1 | Idle | `IDLE` ×2 | 30 s each, stationary |
+| 1 | Idle | `IDLE` ×2, `IDLE-NMODE` ×1 | Stationary, gearbox in Neutral/P. `IDLE` in Normal mode (30 s each); then switch to **N mode** for `IDLE-NMODE` (20 s, ESG still off), and **back to Normal**. Write down both settled idle rpms |
 | 2 | Level check | `LIMIT` ×3 | First one sets the gains: lock them after. Skip if the gearbox upshifts at the limiter |
 | 3 | Full-load pulls | `PULL-LO` ×4, `PULL-HI` ×4 | Smooth, full pedal, no pedal changes mid-pull. Let the engine and intake cool on the drive back |
 | 4 | Coast-downs | `COAST-HI` ×4, `COAST-LO` ×3 | Lift fully, stay in gear, no brakes until the take ends |
