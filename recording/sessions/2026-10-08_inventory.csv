@@ -1,32 +1,32 @@
 file,role,mode,esg,target_rpm,measured_rpm,duration_s,use,notes
-idle non n.wav,idle,Normal,off,idle,705,30.5,engine_int idle loop,
-idle n.wav,idle,N,on,idle,900,31.2,engine_ext idle loop,N mode idles higher
-80 cruise non n.wav,noise profile,Normal,off,~80 km/h,1370,10.5,noise reduction profile,
+idle non n.wav,idle,Normal,off,idle,705,30.5,not used (bank is N-only),
+idle n.wav,idle,N,on,idle,900,31.2,engine idle loop,N mode idles higher
+80 cruise non n.wav,noise profile,Normal,off,~80 km/h,1370,10.5,not used (bank is N-only),
 80 cruise n.wav,noise profile,N,on,~80 km/h,1400,14.9,noise reduction profile,
-limiter non n.wav,limiter,Normal,off,limiter,unclear,3.5,limiter (int),no clear limiter tone found; check by ear
-limiter N.wav,limiter,N,on,limiter,6750,3.7,limiter (ext),confirms limiter ~6750 rpm
-1000 non n.wav,steady hold,Normal,off,1000,970,15.5,engine_int,
-1500 non n.wav,steady hold,Normal,off,1500,1280,15.1,engine_int,actual rpm well below label
-2000 non n.wav,steady hold,Normal,off,2000,2070,15.4,engine_int,
-2500.wav,steady hold,Normal,off,2500,2520,15.7,engine_int,no N in name: read as Normal
-3000.wav,steady hold,Normal,off,3000,3045,15.1,engine_int,no N in name: read as Normal
-3500.wav,steady hold,Normal,off,3500,3550-3850,15.3,engine_int,rpm wanders; no N in name: read as Normal
-1000N.wav,steady hold,N,on,1000,1000,17.9,engine_ext,
-1500N.wav,steady hold,N,on,1500,1280,16.0,engine_ext,actual rpm well below label
-3000N.wav,steady hold,N,on,3000,3020-3210,13.6,engine_ext,
-3500N.wav,steady hold,N,on,3500,3570,15.3,engine_ext,
-4000N.wav,steady hold,N,on,4000,4190,14.9,engine_ext,
-4500N.wav,steady hold,N,on,4500,4665,10.4,engine_ext,
-5000N.wav,steady hold,N,on,5000,5070,15.4,engine_ext,
-5500N.wav,steady hold,N,on,5500,5270-5590,15.3,engine_ext,rpm wanders
-6000N.wav,steady hold,N,on,6000,6030,14.8,engine_ext,
-6500N.wav,steady hold,N,on,6500,6250,14.6,engine_ext,actual rpm below label
-1k 4k.wav,WOT pull,Normal,off,1000->4000,,5.5,engine_int ON slices,no N in name: read as Normal; ~4 s sweep (faster than the 6 s target)
-3k limit.wav,WOT pull,Normal,off,3000->limiter,,6.7,engine_int ON slices,no N in name: read as Normal; ~4.5 s sweep (faster than 7-8 s target)
-limit 3k.wav,coast-down,Normal,off,limiter->3000,,15.4,engine_int OFF slices,slow decay: good
-3k 1k.wav,coast-down,Normal,off,3000->1000,,14.3,engine_int OFF slices,slow decay: good
-2 3 4 wot.wav,upshifts,Normal,off,WOT 2>3>4,,8.5,gear_int,no N in name: read as Normal
-pop1.wav,lift-off pops,Normal,off,lift from WOT,,12.2,backfire / turbo,no N in name: read as Normal; 138 clipped samples on the pops
+limiter non n.wav,limiter,Normal,off,limiter,unclear,3.5,not used (bank is N-only),no clear limiter tone found; check by ear
+limiter N.wav,limiter,N,on,limiter,6750,3.7,limiter,confirms limiter ~6750 rpm
+1000 non n.wav,steady hold,Normal,off,1000,970,15.5,not used (bank is N-only),
+1500 non n.wav,steady hold,Normal,off,1500,1280,15.1,not used (bank is N-only),actual rpm well below label
+2000 non n.wav,steady hold,Normal,off,2000,2070,15.4,not used (bank is N-only),
+2500.wav,steady hold,Normal,off,2500,2520,15.7,not used (bank is N-only),"mode unconfirmed (no N in name, but no 2500N exists); read as Normal"
+3000.wav,steady hold,Normal,off,3000,3045,15.1,not used (bank is N-only),no N in name: read as Normal
+3500.wav,steady hold,Normal,off,3500,3550-3850,15.3,not used (bank is N-only),rpm wanders; no N in name: read as Normal
+1000N.wav,steady hold,N,on,1000,1000,17.9,engine,
+1500N.wav,steady hold,N,on,1500,1280,16.0,engine,actual rpm well below label
+3000N.wav,steady hold,N,on,3000,3020-3210,13.6,engine,
+3500N.wav,steady hold,N,on,3500,3570,15.3,engine,
+4000N.wav,steady hold,N,on,4000,4190,14.9,engine,
+4500N.wav,steady hold,N,on,4500,4665,10.4,engine,
+5000N.wav,steady hold,N,on,5000,5070,15.4,engine,
+5500N.wav,steady hold,N,on,5500,5270-5590,15.3,engine,rpm wanders
+6000N.wav,steady hold,N,on,6000,6030,14.8,engine,
+6500N.wav,steady hold,N,on,6500,6250,14.6,engine,actual rpm below label
+1k 4k.wav,WOT pull,N,on,1000->4000,,5.5,engine ON slices,confirmed N mode; ~4 s sweep (faster than the 6 s target)
+3k limit.wav,WOT pull,N,on,3000->limiter,,6.7,engine ON slices,confirmed N mode; ~4.5 s sweep (faster than 7-8 s target)
+limit 3k.wav,coast-down,N,on,limiter->3000,,15.4,engine OFF slices,confirmed N mode; slow decay: good
+3k 1k.wav,coast-down,N,on,3000->1000,,14.3,engine OFF slices,confirmed N mode; slow decay: good
+2 3 4 wot.wav,upshifts,N,on,WOT 2>3>4,,8.5,gear,confirmed N mode
+pop1.wav,lift-off pops,N,on,lift from WOT,,12.2,backfire / turbo,confirmed N mode; 138 clipped samples on the pops
 20261008_133346.wav,duplicate,N,on,,6030,17.8,ignore,untrimmed copy of 6000N.wav
 20261008_133618.wav,duplicate,N,on,,6250,17.0,ignore,untrimmed copy of 6500N.wav
 20261008_123904.wav,stray,,,,1670,2.3,ignore,short unnamed clip

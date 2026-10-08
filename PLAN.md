@@ -90,6 +90,12 @@ plus a light reverb in FMOD; see `recording/RECORDING_PLAN.md` §10). Recording 
 coast-downs, both sliced and pitch-flattened at each grid rpm; part-load loops are
 recorded as true constant-speed holds.
 
+**Decided after the 2026-10-08 session:** the bank is built from the **N-mode (ESG on)
+recordings only**, for both the interior and exterior sounds. The interior uses the cabin
+recordings as they are; the exterior uses the same loops through the processing in
+`recording/RECORDING_PLAN.md` §10. Normal-mode files are kept but not used. Which file
+feeds what is in `recording/sessions/2026-10-08_inventory.csv`.
+
 ### 2.3 If you can't get a car
 Using other people's recordings (YouTube, sound libraries) is only OK with
 permission. Credit the source and don't redistribute ripped audio.
