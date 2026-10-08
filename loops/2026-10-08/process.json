@@ -1,0 +1,38 @@
+{
+  "noise_profile": "80 cruise n.wav",
+  "denoise_max_cut_db": 6,
+  "not_denoised": [
+    "limiter/limiter_limiter.wav",
+    "part/part_897.wav"
+  ],
+  "cabin_resonance_cuts": [
+    {
+      "hz": 116.0,
+      "prominence_db": 9.6,
+      "cut_db": -4,
+      "q": 4
+    },
+    {
+      "hz": 176.0,
+      "prominence_db": 3.5,
+      "cut_db": -4,
+      "q": 4
+    },
+    {
+      "hz": 210.0,
+      "prominence_db": 7.6,
+      "cut_db": -4,
+      "q": 4
+    }
+  ],
+  "presence": {
+    "hz": 2500,
+    "db": 3,
+    "q": 0.8
+  },
+  "high_shelf": {
+    "hz": 6000,
+    "db": 2
+  },
+  "highpass_hz": 40
+}

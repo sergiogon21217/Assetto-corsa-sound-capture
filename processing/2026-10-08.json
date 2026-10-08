@@ -160,5 +160,74 @@
       "rpm": 6750,
       "start_s": 0.3
     }
+  ],
+  "oneshots": [
+    {
+      "file": "2 3 4 wot.wav",
+      "group": "gear",
+      "name": "upshift",
+      "kind": "segment",
+      "cuts": [
+        [
+          2.12,
+          0.4
+        ],
+        [
+          5.32,
+          0.4
+        ]
+      ],
+      "fade_in_s": 0.01,
+      "fade_out_s": 0.12,
+      "note": "2>3 at ~6500 rpm, 3>4 at ~6200 rpm (DCT spark cut)"
+    },
+    {
+      "file": "pop1.wav",
+      "group": "backfire",
+      "name": "crackle",
+      "kind": "bursts",
+      "n": 4,
+      "length_s": 1.5,
+      "from_s": 1.8,
+      "to_s": 10.6,
+      "fade_in_s": 0.01,
+      "fade_out_s": 0.35,
+      "note": "overrun crackle burst after a lift"
+    },
+    {
+      "file": "pop1.wav",
+      "group": "backfire",
+      "name": "pop",
+      "kind": "transients",
+      "n": 8,
+      "from_s": 1.8,
+      "to_s": 10.6,
+      "spacing_s": 0.25,
+      "pre_s": 0.01,
+      "post_s": 0.15,
+      "fade_in_s": 0.003,
+      "fade_out_s": 0.08,
+      "note": "single pop"
+    },
+    {
+      "file": "pop1.wav",
+      "group": "turbo",
+      "name": "lift",
+      "kind": "segment",
+      "cuts": [
+        [
+          1.5,
+          0.9
+        ]
+      ],
+      "fade_in_s": 0.02,
+      "fade_out_s": 0.3,
+      "note": "lift from ~4500 rpm WOT: diverter-valve whoosh candidate"
+    }
+  ],
+  "noise_profile": "80 cruise n.wav",
+  "no_denoise": [
+    "idle n.wav",
+    "limiter N.wav"
   ]
 }

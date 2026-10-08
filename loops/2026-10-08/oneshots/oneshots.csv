@@ -1,0 +1,16 @@
+group,file,source,start_s,length_s,peak_dbfs,rms_dbfs,note
+gear,oneshots/gear/upshift_1.wav,2 3 4 wot.wav,2.12,0.4,-3.6,-14.8,"2>3 at ~6500 rpm, 3>4 at ~6200 rpm (DCT spark cut)"
+gear,oneshots/gear/upshift_2.wav,2 3 4 wot.wav,5.32,0.4,-3.7,-14.7,"2>3 at ~6500 rpm, 3>4 at ~6200 rpm (DCT spark cut)"
+backfire,oneshots/backfire/crackle_1.wav,pop1.wav,3.3,1.5,-1.0,-12.9,overrun crackle burst after a lift
+backfire,oneshots/backfire/crackle_2.wav,pop1.wav,4.9,1.5,-1.0,-12.3,overrun crackle burst after a lift
+backfire,oneshots/backfire/crackle_3.wav,pop1.wav,6.4,1.5,-1.0,-14.1,overrun crackle burst after a lift
+backfire,oneshots/backfire/crackle_4.wav,pop1.wav,9.05,1.5,-1.0,-12.4,overrun crackle burst after a lift
+backfire,oneshots/backfire/pop_1.wav,pop1.wav,4.175,0.16,-1.0,-13.5,single pop
+backfire,oneshots/backfire/pop_2.wav,pop1.wav,4.718,0.16,-1.0,-12.7,single pop
+backfire,oneshots/backfire/pop_3.wav,pop1.wav,5.395,0.16,-1.0,-13.8,single pop
+backfire,oneshots/backfire/pop_4.wav,pop1.wav,6.138,0.16,-1.0,-13.1,single pop
+backfire,oneshots/backfire/pop_5.wav,pop1.wav,6.499,0.16,-1.0,-13.7,single pop
+backfire,oneshots/backfire/pop_6.wav,pop1.wav,6.902,0.16,-1.1,-14.0,single pop
+backfire,oneshots/backfire/pop_7.wav,pop1.wav,7.772,0.16,-1.0,-13.0,single pop
+backfire,oneshots/backfire/pop_8.wav,pop1.wav,10.119,0.16,-1.0,-13.8,single pop
+turbo,oneshots/turbo/lift_1.wav,pop1.wav,1.5,0.9,-1.0,-13.7,lift from ~4500 rpm WOT: diverter-valve whoosh candidate

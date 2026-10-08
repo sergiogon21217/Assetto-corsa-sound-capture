@@ -1,4 +1,4 @@
 recordings/
 __pycache__/
 *.pyc
-loops/*/previews/
+**/previews/
