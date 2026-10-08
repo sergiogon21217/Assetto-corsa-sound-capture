@@ -12,7 +12,10 @@ python tools/oneshots.py processing/2026-10-08.json      # shifts, pops, crackle
 python tools/process.py processing/2026-10-08.json       # int/ (denoised) and ext/ (exterior EQ)
 python tools/preview.py loops/2026-10-08 recordings/2026-10-08/RecForge   # listening previews
 python tools/preview.py loops/2026-10-08/ext recordings/2026-10-08/RecForge
+python tools/stage_fmod.py processing/2026-10-08.json    # fmod/Assets + fmod/instruments.csv
 ```
+
+Then follow `fmod/FMOD_BUILD.md` in FMOD Studio 1.08.12.
 
 | File | What it does |
 |---|---|
@@ -22,6 +25,7 @@ python tools/preview.py loops/2026-10-08/ext recordings/2026-10-08/RecForge
 | `pitch_table.py` | Equal-power volume and pitch (semitones) automation points per loop for the `rpms` parameter. |
 | `oneshots.py` | Cuts one-shots from the config's `oneshots` list: explicit segments (shifts, lift-off), the busiest crackle bursts, and the strongest single pops. |
 | `process.py` | `int/`: gentle road/wind noise reduction (profile from the session's noise take; idle and limiter skipped). `ext/`: int plus exterior EQ — high-pass, automatic cuts on the cabin's own resonances, presence lift. Settings applied are written to `process.json`. |
+| `stage_fmod.py` | Copies the int/ext audio into `fmod/Assets/<car>/<event>/...` and writes `fmod/instruments.csv`: every FMOD instrument with its event, track and placement on the `rpms` sheet. |
 | `preview.py` | Plays the loops along rpm paths with the same crossfade rules, and re-synthesises a real pull and coast-down to compare against the recording. |
 
 Layers: `part` (steady holds, light load), `on` (full-throttle pull slices), `off`

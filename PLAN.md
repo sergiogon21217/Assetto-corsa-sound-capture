@@ -185,7 +185,7 @@ tools/             # processing pipeline (see tools/README.md)
   pitch_table.py   # crossfade/pitch automation values for FMOD
   preview.py       # listen to the loop set without FMOD
 loops/<session>/   # processed loops (output) + manifest + FMOD table
-fmod/              # FMOD 1.08 project (from the AC SDK template) - next
+fmod/              # staged assets, instruments.csv, FMOD_BUILD.md, probe script
 build/             # <kona_n>.bank + GUIDs.txt ready to drop into the car - next
 ```
 

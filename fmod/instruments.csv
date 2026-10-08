@@ -1,0 +1,117 @@
+event,track,file,kind,rpms_start,rpms_full,rpms_end,autopitch_root
+engine_int,off,engine_int/off/off_0897.wav,loop,0,897,996,896.9
+engine_int,off,engine_int/off/off_0996.wav,loop,897,996,1148,996.0
+engine_int,off,engine_int/off/off_1148.wav,loop,996,1148,1295,1148.4
+engine_int,off,engine_int/off/off_1295.wav,loop,1148,1295,1506,1294.8
+engine_int,off,engine_int/off/off_1506.wav,loop,1295,1506,1693,1506.0
+engine_int,off,engine_int/off/off_1693.wav,loop,1506,1693,1908,1693.3
+engine_int,off,engine_int/off/off_1908.wav,loop,1693,1908,2142,1907.6
+engine_int,off,engine_int/off/off_2142.wav,loop,1908,2142,2410,2141.5
+engine_int,off,engine_int/off/off_2410.wav,loop,2142,2410,2710,2409.7
+engine_int,off,engine_int/off/off_2710.wav,loop,2410,2710,3012,2709.9
+engine_int,off,engine_int/off/off_3012.wav,loop,2710,3012,3402,3012.1
+engine_int,off,engine_int/off/off_3402.wav,loop,3012,3402,3785,3402.4
+engine_int,off,engine_int/off/off_3785.wav,loop,3402,3785,4252,3784.9
+engine_int,off,engine_int/off/off_4252.wav,loop,3785,4252,4738,4252.0
+engine_int,off,engine_int/off/off_4738.wav,loop,4252,4738,5312,4738.3
+engine_int,off,engine_int/off/off_5312.wav,loop,4738,5312,5877,5311.7
+engine_int,off,engine_int/off/off_5877.wav,loop,5312,5877,14000,5876.7
+engine_int,part,engine_int/part/part_0897.wav,loop,0,897,998,896.9
+engine_int,part,engine_int/part/part_0998.wav,loop,897,998,1318,997.8
+engine_int,part,engine_int/part/part_1318.wav,loop,998,1318,2526,1317.7
+engine_int,part,engine_int/part/part_2526.wav,loop,1318,2526,3208,2525.7
+engine_int,part,engine_int/part/part_3208.wav,loop,2526,3208,3564,3207.5
+engine_int,part,engine_int/part/part_3564.wav,loop,3208,3564,4175,3564.1
+engine_int,part,engine_int/part/part_4175.wav,loop,3564,4175,4662,4175.2
+engine_int,part,engine_int/part/part_4662.wav,loop,4175,4662,5068,4661.5
+engine_int,part,engine_int/part/part_5068.wav,loop,4662,5068,5273,5067.7
+engine_int,part,engine_int/part/part_5273.wav,loop,5068,5273,5967,5273.0
+engine_int,part,engine_int/part/part_5967.wav,loop,5273,5967,6211,5967.1
+engine_int,part,engine_int/part/part_6211.wav,loop,5967,6211,14000,6211.3
+engine_int,on,engine_int/on/on_1494.wav,loop,0,1494,1693,1494.1
+engine_int,on,engine_int/on/on_1693.wav,loop,1494,1693,1896,1693.3
+engine_int,on,engine_int/on/on_1896.wav,loop,1693,1896,2154,1896.4
+engine_int,on,engine_int/on/on_2154.wav,loop,1896,2154,2399,2153.9
+engine_int,on,engine_int/on/on_2399.wav,loop,2154,2399,2711,2398.9
+engine_int,on,engine_int/on/on_2711.wav,loop,2399,2711,3001,2710.9
+engine_int,on,engine_int/on/on_3001.wav,loop,2711,3001,3398,3001.1
+engine_int,on,engine_int/on/on_3398.wav,loop,3001,3398,3799,3398.4
+engine_int,on,engine_int/on/on_3799.wav,loop,3398,3799,4249,3798.7
+engine_int,on,engine_int/on/on_4249.wav,loop,3799,4249,4769,4248.6
+engine_int,on,engine_int/on/on_4769.wav,loop,4249,4769,5313,4769.2
+engine_int,on,engine_int/on/on_5313.wav,loop,4769,5313,5897,5313.1
+engine_int,on,engine_int/on/on_5897.wav,loop,5313,5897,6526,5897.1
+engine_int,on,engine_int/on/on_6526.wav,loop,5897,6526,14000,6526.2
+gear_int,multi,gear_int/upshift_1.wav,"one-shot (multi instrument, random)",,,,
+gear_int,multi,gear_int/upshift_2.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/crackle_1.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/crackle_2.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/crackle_3.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/crackle_4.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_1.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_2.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_3.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_4.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_5.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_6.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_7.wav,"one-shot (multi instrument, random)",,,,
+backfire_int,multi,backfire_int/pop_8.wav,"one-shot (multi instrument, random)",,,,
+engine_ext,off,engine_ext/off/off_0897.wav,loop,0,897,996,896.9
+engine_ext,off,engine_ext/off/off_0996.wav,loop,897,996,1148,996.0
+engine_ext,off,engine_ext/off/off_1148.wav,loop,996,1148,1295,1148.4
+engine_ext,off,engine_ext/off/off_1295.wav,loop,1148,1295,1506,1294.8
+engine_ext,off,engine_ext/off/off_1506.wav,loop,1295,1506,1693,1506.0
+engine_ext,off,engine_ext/off/off_1693.wav,loop,1506,1693,1908,1693.3
+engine_ext,off,engine_ext/off/off_1908.wav,loop,1693,1908,2142,1907.6
+engine_ext,off,engine_ext/off/off_2142.wav,loop,1908,2142,2410,2141.5
+engine_ext,off,engine_ext/off/off_2410.wav,loop,2142,2410,2710,2409.7
+engine_ext,off,engine_ext/off/off_2710.wav,loop,2410,2710,3012,2709.9
+engine_ext,off,engine_ext/off/off_3012.wav,loop,2710,3012,3402,3012.1
+engine_ext,off,engine_ext/off/off_3402.wav,loop,3012,3402,3785,3402.4
+engine_ext,off,engine_ext/off/off_3785.wav,loop,3402,3785,4252,3784.9
+engine_ext,off,engine_ext/off/off_4252.wav,loop,3785,4252,4738,4252.0
+engine_ext,off,engine_ext/off/off_4738.wav,loop,4252,4738,5312,4738.3
+engine_ext,off,engine_ext/off/off_5312.wav,loop,4738,5312,5877,5311.7
+engine_ext,off,engine_ext/off/off_5877.wav,loop,5312,5877,14000,5876.7
+engine_ext,part,engine_ext/part/part_0897.wav,loop,0,897,998,896.9
+engine_ext,part,engine_ext/part/part_0998.wav,loop,897,998,1318,997.8
+engine_ext,part,engine_ext/part/part_1318.wav,loop,998,1318,2526,1317.7
+engine_ext,part,engine_ext/part/part_2526.wav,loop,1318,2526,3208,2525.7
+engine_ext,part,engine_ext/part/part_3208.wav,loop,2526,3208,3564,3207.5
+engine_ext,part,engine_ext/part/part_3564.wav,loop,3208,3564,4175,3564.1
+engine_ext,part,engine_ext/part/part_4175.wav,loop,3564,4175,4662,4175.2
+engine_ext,part,engine_ext/part/part_4662.wav,loop,4175,4662,5068,4661.5
+engine_ext,part,engine_ext/part/part_5068.wav,loop,4662,5068,5273,5067.7
+engine_ext,part,engine_ext/part/part_5273.wav,loop,5068,5273,5967,5273.0
+engine_ext,part,engine_ext/part/part_5967.wav,loop,5273,5967,6211,5967.1
+engine_ext,part,engine_ext/part/part_6211.wav,loop,5967,6211,14000,6211.3
+engine_ext,on,engine_ext/on/on_1494.wav,loop,0,1494,1693,1494.1
+engine_ext,on,engine_ext/on/on_1693.wav,loop,1494,1693,1896,1693.3
+engine_ext,on,engine_ext/on/on_1896.wav,loop,1693,1896,2154,1896.4
+engine_ext,on,engine_ext/on/on_2154.wav,loop,1896,2154,2399,2153.9
+engine_ext,on,engine_ext/on/on_2399.wav,loop,2154,2399,2711,2398.9
+engine_ext,on,engine_ext/on/on_2711.wav,loop,2399,2711,3001,2710.9
+engine_ext,on,engine_ext/on/on_3001.wav,loop,2711,3001,3398,3001.1
+engine_ext,on,engine_ext/on/on_3398.wav,loop,3001,3398,3799,3398.4
+engine_ext,on,engine_ext/on/on_3799.wav,loop,3398,3799,4249,3798.7
+engine_ext,on,engine_ext/on/on_4249.wav,loop,3799,4249,4769,4248.6
+engine_ext,on,engine_ext/on/on_4769.wav,loop,4249,4769,5313,4769.2
+engine_ext,on,engine_ext/on/on_5313.wav,loop,4769,5313,5897,5313.1
+engine_ext,on,engine_ext/on/on_5897.wav,loop,5313,5897,6526,5897.1
+engine_ext,on,engine_ext/on/on_6526.wav,loop,5897,6526,14000,6526.2
+limiter,main,limiter/limiter_loop.wav,loop,,,,
+gear_ext,multi,gear_ext/upshift_1.wav,"one-shot (multi instrument, random)",,,,
+gear_ext,multi,gear_ext/upshift_2.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/crackle_1.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/crackle_2.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/crackle_3.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/crackle_4.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_1.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_2.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_3.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_4.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_5.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_6.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_7.wav,"one-shot (multi instrument, random)",,,,
+backfire_ext,multi,backfire_ext/pop_8.wav,"one-shot (multi instrument, random)",,,,
+turbo,bov,turbo/bov_lift_1.wav,one-shot on bov,,,,
