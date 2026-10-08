@@ -30,6 +30,7 @@ INK = colors.HexColor("#1f2328")
 MUTED = colors.HexColor("#656d76")
 RULE = colors.HexColor("#d0d7de")
 BAND = colors.HexColor("#f2f4f7")
+WARN = colors.HexColor("#fde68a")
 TIER_BG = {"A": colors.HexColor("#dbeafe"), "B": colors.HexColor("#ede9fe"),
            "C": colors.HexColor("#f1f5f9")}
 
@@ -54,8 +55,8 @@ ss = lambda kind, rpms: [f"SS-{kind}-{r}" for r in rpms]
 TIER_A = [1000, 1300, 1700, 2150, 2700, 3400, 4250, 5300, 6500]
 TIER_B = [900, 1150, 1500, 1900, 2400, 3000, 3800, 4750, 5900]
 RUNS = [
-    ("0  Noise", "Engine off parked; then rolling in neutral at ~80 km/h, only if safe.",
-     ["NOISE-PARK", "NOISE-ROLL"]),
+    ("0  Noise", "Engine off parked; then steady ~80 km/h in top gear, barely on throttle.",
+     ["NOISE-PARK", "NOISE-CRUISE"]),
     ("1  Idle", "30 s each, stationary.", ["IDLE"]),
     ("2  Level check", "First take sets gains to about -6 dBFS peaks, then LOCK them.",
      ["LIMIT"]),
@@ -72,6 +73,9 @@ RUNS = [
       "UP-PART", ("DOWN", 5, " 4>3"), ("DOWN", 5, " 3>2")]),
     ("8  Lift-offs", "POP-N only if you want pops (N mode, ESG still off).", ["LIFT", "POP-N"]),
     ("9  Whine", "", ["CRUISE-WHINE"]),
+    ("10 ESG reference: switch ESG ON",
+     "Reference only, not used in the bank. Switch ESG back OFF afterwards.",
+     ["IDLE-ESG", "PULL-REF-ESG", "PART-ESG-2150", "PART-ESG-4250"]),
 ]
 
 WIDTHS = [37 * mm, 29 * mm, 10 * mm, 24 * mm, 30 * mm, 16 * mm, 12 * mm,
@@ -130,7 +134,8 @@ def block_table(name, note, takes):
     label = f"<b>{arrows(name)}</b>" + (f"   <font color='#656d76'>{arrows(note)}</font>"
                                          if note else "")
     data = [[Paragraph(label, S["cell"])] + [""] * (len(HEAD) - 1)]
-    style = BASE_STYLE + [("SPAN", (0, 0), (-1, 0)), ("BACKGROUND", (0, 0), (-1, 0), BAND),
+    band = WARN if "ESG ON" in name else BAND  # make the ESG-on block impossible to miss
+    style = BASE_STYLE + [("SPAN", (0, 0), (-1, 0)), ("BACKGROUND", (0, 0), (-1, 0), band),
                           ("LINEABOVE", (0, 0), (-1, 0), 0.6, RULE)]
     seen = set()
     for t in takes:
@@ -161,7 +166,7 @@ def session(title, blocks):
 
 
 def header():
-    settings = ["Normal drive mode", "ESG OFF (check menu)", "Manual / paddle mode",
+    settings = ["Normal drive mode", "ESG OFF (check menu; ON only in block 10)", "Manual / paddle mode",
                 "A/C, fan, radio off", "Windows + sunroof closed, no rattles", "Warm engine",
                 "Dash video on (optional)", "Gains locked after LIMIT", "Say take ID + gear, clap, go"]
     cells = [Paragraph(f"{BOX}  {s}", S["cell"]) for s in settings]

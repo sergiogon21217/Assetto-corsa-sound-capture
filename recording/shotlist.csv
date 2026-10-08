@@ -1,6 +1,6 @@
 take_id,session,tier,type,target_rpm,load,gear,drive_mode,esg,hold_s,reps,channels,feeds_fmod_event,notes
 NOISE-PARK,road,A,noise,0,engine off,-,-,-,30,1,CAB FWL,-,"Parked, engine off: background noise profile"
-NOISE-ROLL,road,B,noise,0 (idle),none,N while rolling,Normal,off,10,2,CAB FWL,-,"Coast in neutral at ~80 km/h, engine idling: wind/tyre noise profile for cleanup"
+NOISE-CRUISE,road,B,noise,low,lightest,8 (top),Normal,off,10,2,CAB FWL,-,"Steady ~80 km/h in top gear, barely on throttle: wind/tyre noise profile for cleanup"
 IDLE,road,A,idle,800,none,N/P,Normal,off,30,2,CAB FWL,engine_int engine_ext,"Stationary, warm engine; the 800 point for every layer"
 LIMIT,road,A,steady,limiter,full (WOT),2,Normal,off,2,3,CAB FWL,limiter engine_int engine_ext,"Brief hold on the limiter, only if manual mode holds the gear. First take sets gains"
 PULL-LO,road,A,ramp,1000->4000,full (WOT),highest that fits,Normal,off,,4,CAB FWL,engine_int engine_ext turbo,WOT from ~1000 rpm in the highest gear the road allows; aim for <= 500 rpm/s
@@ -32,3 +32,7 @@ DOWN,road,A,one-shot,~3000,overrun,4>3 3>2,Normal,off,,5,CAB FWL,gear_int gear_e
 LIFT,road,A,one-shot,4000+ then lift,full->0,3,Normal,off,,6,CAB FWL,turbo backfire_int backfire_ext,Sharp lift from WOT: diverter-valve whoosh plus any pops
 POP-N,road,B,one-shot,5000+ then lift,full->0,3,N (ESG off),off,,8,CAB FWL,backfire_int backfire_ext,Optional: only if you want pops; Normal mode gives few or none
 CRUISE-WHINE,road,B,steady,~2000-2500,light,6-8,Normal,off,15,2,CAB FWL,transmission,"Steady cruise, then coast; gearbox whine"
+IDLE-ESG,road,B,idle,800,none,N/P,Normal,ON,20,1,CAB FWL,reference (ESG),ESG ON. Stationary idle
+PULL-REF-ESG,road,B,ramp,1500->limiter,full (WOT),2,Normal,ON,,2,CAB FWL,reference (ESG),ESG ON. Same as PULL-REF
+PART-ESG-2150,road,B,steady,2150,light,low,Normal,ON,8,1,CAB FWL,reference (ESG),ESG ON. Same as SS-PART-2150
+PART-ESG-4250,road,B,steady,4250,light,low,Normal,ON,8,1,CAB FWL,reference (ESG),ESG ON. Same as SS-PART-4250

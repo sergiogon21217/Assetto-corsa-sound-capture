@@ -6,11 +6,12 @@ sound bank described in [`../PLAN.md`](../PLAN.md).
 **Capture setup decided:**
 - Everything recorded **inside the car**. No exterior microphones; the exterior sound
   (`*_ext` events) is derived from the cabin recordings afterwards (§10).
-- **Normal drive mode**, **ESG (sound enhancer) off**.
+- **Normal drive mode**, **ESG (sound enhancer) off** for every take except the short,
+  clearly marked ESG reference block at the end (§6, block 10).
 - On a **straight private road**. No dyno, so no dyno roller/fan whine, but also no way
   to hold full throttle at a fixed rpm (§1).
 
-The machine-readable shot list is [`shotlist.csv`](shotlist.csv) (33 takes). The printable
+The machine-readable shot list is [`shotlist.csv`](shotlist.csv) (37 takes). The printable
 version is [`shotlist_checklist.pdf`](shotlist_checklist.pdf).
 
 ---
@@ -51,7 +52,7 @@ the brakes and the DCT clutch quickly, and the brake noise gets into the recordi
 
 - **Drive mode: Normal.** Use the same mode for every take, because the exhaust valve,
   throttle mapping and shift behaviour change between modes.
-- **ESG off.** Check it in the settings menu before starting, and after any restart.
+- **ESG off** (except the reference block 10). Check it in the settings menu before starting, and after any restart.
 - **Manual/paddle shifting**, so the gearbox holds the gear through each pull.
 - A/C and fan off, radio off, **windows and sunroof closed**, phone on silent, nothing loose
   in the cabin (rattles end up in every loop).
@@ -144,13 +145,13 @@ for your road:
 
 ## 6. Run order
 
-All in Normal mode, ESG off, manual mode. Say the take ID out loud before each run
+All in Normal mode, ESG off (until block 10), manual mode. Say the take ID out loud before each run
 **and the gear** (e.g. "pull low, fifth gear, run two"), clap, then go. The spoken slate
 replaces a data log, so say anything unusual too ("gust", "car passed", "lifted early").
 
 | # | Block | Takes | Notes |
 |---|---|---|---|
-| 0 | Noise | `NOISE-PARK`, `NOISE-ROLL` | Engine off parked; then rolling in neutral at speed (only if safe). Used to clean up wind/tyre noise |
+| 0 | Noise | `NOISE-PARK`, `NOISE-CRUISE` ×2 | Engine off parked; then a steady ~80 km/h in top gear, barely on throttle (no coasting in neutral: it's bad for the DCT). Used to clean up wind/tyre noise; the engine is at low rpm there, so its tone is easy to separate out |
 | 1 | Idle | `IDLE` ×2 | 30 s each, stationary |
 | 2 | Level check | `LIMIT` ×3 | First one sets the gains: lock them after. Skip if the gearbox upshifts at the limiter |
 | 3 | Full-load pulls | `PULL-LO` ×4, `PULL-HI` ×4 | Smooth, full pedal, no pedal changes mid-pull. Let the engine and intake cool on the drive back |
@@ -159,6 +160,8 @@ replaces a data log, so say anything unusual too ("gust", "car passed", "lifted 
 | 6 | Reference | `PULL-REF` ×2 | Ordinary 2nd-gear pull, for A/B comparison later |
 | 7 | One-shots | `UP-WOT`, `UP-PART`, `DOWN`, `LIFT`, `POP-N` (optional) | Reps per shift as in the shot list |
 | 8 | Whine | `CRUISE-WHINE` ×2 | Steady cruise in 6th–8th, then coast |
+| 9 | Pause | – | Stop, **switch ESG ON** in the settings menu, say "ESG on" into the recorder |
+| 10 | ESG reference | `IDLE-ESG`, `PULL-REF-ESG` ×2, `PART-ESG-2150`, `PART-ESG-4250` | Same as the matching normal takes, but with ESG on. About 5 minutes. **Switch ESG back OFF afterwards** |
 
 Four pulls of each kind is deliberate: road takes vary (wind, gusts, a passing car), and
 the best slice at each rpm can come from a different run.
@@ -178,6 +181,7 @@ the best slice at each rpm can come from a different run.
 | `transmission` | `CRUISE-WHINE` | 1 loop |
 | `horn` | not recorded; keep the existing one | – |
 | — (reference) | `PULL-REF` | For comparing the finished bank with reality |
+| — (reference) | `*-ESG` takes | Never mixed into the bank. Hyundai's ESG imitates the exhaust note, so these are a guide for how far to push the exterior EQ in §10 (step 4), and a "what the driver hears" comparison |
 
 ---
 
@@ -217,12 +221,14 @@ recording differs from an exterior one mainly in **frequency balance**: the cabi
 a low "boom" and the bodywork filters out the high exhaust rasp. So the processing order is:
 
 1. **Start from the FWL loops** if you have them. Otherwise use the CAB loops.
-2. **Clean the wind/tyre noise** using the `NOISE-ROLL` profile. Use gentle settings; heavy
+2. **Clean the wind/tyre noise** using the `NOISE-CRUISE` profile. Use gentle settings; heavy
    noise reduction leaves watery artefacts that loop audibly.
 3. **EQ, remove the cabin:** high-pass around 40 Hz, then find the 1–3 cabin boom peaks in
    roughly 60–200 Hz (they stay at the same frequency whatever the rpm) and cut them 3–6 dB.
 4. **EQ, add the outside:** a gentle lift around 1–4 kHz for exhaust rasp and presence, and a
-   little high shelf. Use light saturation if it still sounds too muffled.
+   little high shelf. Use light saturation if it still sounds too muffled. Compare against the
+   ESG reference takes: they show the exhaust character Hyundai wanted, as a target to aim
+   towards (not something to copy exactly).
 5. **Space last, and done in FMOD** rather than baked into the files: a short, mostly
    early-reflection reverb (outdoor / small-space type, low wet mix of about 10–20%) as an
    effect on the `engine_ext` event or the exterior bus. That keeps the loops clean (reverb
