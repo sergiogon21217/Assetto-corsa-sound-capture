@@ -83,8 +83,9 @@ Write down which market your recording car is from.
 4. **Extras**: 5+ clean pops/crackles, turbo blow-off/flutter on lift,
    gear whine at steady cruise, horn, door (optional).
 
-Record each take in **both N mode (valve open, ESG on)** and **ESG off**
-if possible.
+**Decided:** record **cabin-only**, in **Normal mode**, with the **ESG off**. The
+exterior sound is derived from the cabin recordings with EQ plus a light reverb in FMOD
+(see `recording/RECORDING_PLAN.md` §8).
 
 ### 2.3 If you can't get a car
 Using other people's recordings (YouTube, sound libraries) is only OK with
@@ -198,8 +199,7 @@ Milestones:
   author allows sound replacements. This needs to be answered first.
 - **Access to a car / dyno.** Road-only takes give ramps with background
   noise. That's workable, but it takes more cleanup.
-- **ESG in the cabin.** Is the goal "what the driver hears" (ESG on) or the pure
-  mechanical sound?
+- ~~**ESG in the cabin.**~~ Decided: ESG off, mechanical sound only.
 - **FMOD 1.08 availability.** Old versions are downloadable from the FMOD site
   archive with a free account.
 - **Legal/safety**: record WOT pulls only on a closed course or dyno.
